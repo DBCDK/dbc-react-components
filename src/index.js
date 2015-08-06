@@ -1,4 +1,4 @@
 'use strict';
 
-import CoverImageContainer from './components/CoverImage/coverImageContainer.component.js';
+import CoverImageContainer from './components/CoverImage/CoverImageContainer.component.js';
 export {CoverImageContainer as CoverImage};
