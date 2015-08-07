@@ -19,7 +19,7 @@ const CoverImageContainer = React.createClass({
   },
 
   getInitialState() {
-    return {imgurl: null};
+    return {imgurl: ''};
   },
 
   componentDidMount() {
