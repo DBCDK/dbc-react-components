@@ -2,7 +2,7 @@
 
 /**
  * @File
- * TODO some description
+ * Actions for the CoverImage component
  */
 
 import Reflux from 'reflux';
