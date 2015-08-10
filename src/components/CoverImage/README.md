@@ -10,9 +10,9 @@ The CoverImage depends on the dbc-node-serviceprovider is part of the parent pro
 
 ## Properties
 The CoverImage component has the following properties:  
-`pids` - array of strings
-`prefSize` - string
-`noCoverUrl` - string
+`pids` - array of strings  
+`prefSize` - string  
+`noCoverUrl` - string  
 
 ## Example
 
@@ -23,7 +23,11 @@ import {CoverImage} from 'dbc-react-components';
 
 render() {
   return (
-     <CoverImage pids={[pid, pid, pid]} prefSize={'detail_500'} noCoverUrl={'path/to/fallback/image'} />
+     <CoverImage   
+        pids={['pid', 'pid', 'pid']}  
+        prefSize={'detail_500'}  
+        noCoverUrl={'path/to/fallback/image'}   
+     />
    );
 }
 ```

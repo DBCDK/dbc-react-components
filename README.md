@@ -6,3 +6,5 @@ Common repository for React components developed at DBC.
 
 ## Components
 
+[CoverImage](src/components/CoverImage)  
+[AutoComplete](src/components/AutoComplete)
