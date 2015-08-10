@@ -19,9 +19,7 @@ module.exports = function() {
     ],
 
     preprocessors: {
-      '**/*.js': [
-          file => babel.transform(file.content, {sourceMaps: true})
-      ]
+      '**/*.js': [file => babel.transform(file.content, {sourceMaps: true})]
     },
 
     postprocessor: webpackPostprocessor,
