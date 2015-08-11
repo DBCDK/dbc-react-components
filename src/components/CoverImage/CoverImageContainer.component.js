@@ -14,7 +14,7 @@ const CoverImageContainer = React.createClass({
   displayName: 'CoverImageContainer',
   propTypes: {
     noCoverUrl: React.PropTypes.string,
-    pids: React.PropTypes.array.isRequired,
+    pids: React.PropTypes.array,
     prefSize: React.PropTypes.string.isRequired
   },
 
@@ -27,7 +27,9 @@ const CoverImageContainer = React.createClass({
     const store = CoverImageStore.getState();
     this.setImageUrl(store);
 
-    CoverImageActions(this.props.pids);
+    if (this.props.pids) {
+      CoverImageActions(this.props.pids);
+    }
   },
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -35,8 +37,10 @@ const CoverImageContainer = React.createClass({
   },
 
   setImageUrl(store) {
-    const images = this.getImages(store);
-    this.setState({imgurl: this.getImageUrl(images)});
+    if (this.isMounted()) {
+      const images = this.getImages(store);
+      this.setState({imgurl: this.getImageUrl(images)});
+    }
   },
 
   getImages(store) {

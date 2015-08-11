@@ -36,7 +36,7 @@ var AutoCompleteCategory = React.createClass({
 
     const rows = data.map((value, key) => {
       return (
-        <AutoCompleteRow href={value.href} image={value.image} key={key} text={value.text}/>
+        <AutoCompleteRow href={value.href} image={value.image} imageComp={value.imageComp} key={key} text={value.text} />
       );
     });
 

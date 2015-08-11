@@ -10,9 +10,9 @@ The CoverImage depends on the dbc-node-serviceprovider is part of the parent pro
 
 ## Properties
 The CoverImage component has the following properties:  
-`pids` - array of strings  
-`prefSize` - string  
-`noCoverUrl` - string  
+`pids` - array of strings - optional
+`prefSize` - string  - optional but required if `pids` is defined  
+`noCoverUrl` - string - optional
 
 ## Example
 
