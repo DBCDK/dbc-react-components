@@ -33,14 +33,14 @@ describe('Test AutoCompleteRow component', () => {
   it('Should render the component when a component is given in props.imageComp', () => {
     render.render(<AutoCompleteRow imageComp={CoverImage} />);
     const rendered = render.getRenderOutput();
-    const needle = rendered.props.children.props.children[0].props.children[0].displayName;
+    const needle = rendered.props.children.props.children[0].props.children.displayName;
     assert.strictEqual(needle, 'CoverImageContainer', 'CoverImageContainer was rendered as expected');
   });
 
   it('Should render the component when both a component is given in props.imageComp and a string is given in image', () => {
-    render.render(<AutoCompleteRow imageComp={CoverImage} image={'some/path'} />);
+    render.render(<AutoCompleteRow image={'some/path'} imageComp={CoverImage} />);
     const rendered = render.getRenderOutput();
-    const needle = rendered.props.children.props.children[0].props.children[0].displayName;
+    const needle = rendered.props.children.props.children[0].props.children.displayName;
     assert.strictEqual(needle, 'CoverImageContainer', 'CoverImageContainer was rendered as expected');
   });
 });
