@@ -18,7 +18,8 @@ const SearchField = React.createClass({
   displayName: 'TokenSearchField.component',
   propTypes: {
     change: PropTypes.func,
-    focus: React.PropTypes.bool,
+    focus: React.PropTypes.func,
+    pending: React.PropTypes.bool,
     placeholder: React.PropTypes.string,
     query: PropTypes.array.isRequired,
     update: PropTypes.func.isRequired
@@ -78,8 +79,10 @@ const SearchField = React.createClass({
 
   render() {
     const {hasFocus, text} = this.state;
-    const {query} = this.props;
+    const {query, pending} = this.props;
     const tokenClasses = !hasFocus && 'tokens-wrapper' || 'tokens-wrapper hide';
+    const spinnerClass = pending ? 'token-searchfield--spinner pending' : 'token-searchfield--spinner';
+
     return (
       <div className='token-searchfield' >
         <form onSubmit={this.onSubmit} >
@@ -100,7 +103,7 @@ const SearchField = React.createClass({
                      value={text || ''}
                 />
             </li>
-            <li className='token-searchfield--spinner'></li>
+            <li className={spinnerClass}></li>
             <li className='submit' >
               <input className='button small' onClick={this.onSubmit} type='submit' value='søg' />
             </li>
