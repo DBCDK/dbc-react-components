@@ -1,4 +1,5 @@
 'use strict';
+
 let wallabyWebpack = require('wallaby-webpack');
 let webpackConfig = require('./webpack.test.config');
 let webpackPostprocessor = wallabyWebpack(webpackConfig);
@@ -11,7 +12,8 @@ module.exports = function() {
       {pattern: 'src/**/__tests__/testStore.js', load: false},
       {pattern: 'src/**/*.component.js', load: false},
       {pattern: 'src/**/*.action.js', load: false},
-      {pattern: 'src/**/*.store.js', load: false}
+      {pattern: 'src/**/*.store.js', load: false},
+      {pattern: 'src/utils/*.util.js', load: false}
     ],
 
     tests: [
@@ -25,7 +27,6 @@ module.exports = function() {
     postprocessor: webpackPostprocessor,
 
     bootstrap: function() {
-      // required to trigger tests loading
       window.__moduleBundler.loadTests();
     },
 
