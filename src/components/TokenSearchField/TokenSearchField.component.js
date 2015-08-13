@@ -15,11 +15,13 @@ import TokenList from '../TokenList/TokenList.component.js';
 import {updateQueryFromString} from '../../utils/QueryString.util.js';
 
 const SearchField = React.createClass({
+  displayName: 'TokenSearchField.component',
   propTypes: {
-    query: PropTypes.array.isRequired,
-    update: PropTypes.func.isRequired,
     change: PropTypes.func,
-    placeholder: React.PropTypes.string
+    focus: React.PropTypes.bool,
+    placeholder: React.PropTypes.string,
+    query: PropTypes.array.isRequired,
+    update: PropTypes.func.isRequired
   },
 
   getInitialState() {
@@ -88,19 +90,19 @@ const SearchField = React.createClass({
               </div>
             </li>
             <li className='inputfield' >
-              <input type='text'
-                     className='searchfield'
-                     onChange={this.onChange}
-                     onFocus={this.setFocus.bind(this, true)}
+              <input className='searchfield'
                      onBlur={this.setFocus.bind(this, false)}
+                     onChange={this.onChange}
                      onClick={this.setFocus.bind(this, true)}
-                     value={text || ''}
+                     onFocus={this.setFocus.bind(this, true)}
                      placeholder={this.props.placeholder}
+                     type='text'
+                     value={text || ''}
                 />
             </li>
             <li className='token-searchfield--spinner'></li>
             <li className='submit' >
-              <input onClick={this.onSubmit} className='button small' type='submit' value='søg' />
+              <input className='button small' onClick={this.onSubmit} type='submit' value='søg' />
             </li>
           </ul>
         </form>

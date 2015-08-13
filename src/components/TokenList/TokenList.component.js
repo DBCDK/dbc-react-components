@@ -47,6 +47,7 @@ function getColor(type) {
 }
 
 export default React.createClass({
+  displayName: 'TokenList.component',
   propTypes: {
     query: PropTypes.array.isRequired,
     remove: PropTypes.func.isRequired
@@ -73,11 +74,11 @@ export default React.createClass({
 
       return (
         <Token
-          key={element.index}
+          color={getColor(element.type)}
           index={element.index}
+          key={element.index}
           remove={remove.bind(null, element)}
           text={element.value}
-          color={getColor(element.type)}
           />
       );
     }).reverse();

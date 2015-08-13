@@ -16,10 +16,11 @@
 import React, {PropTypes} from 'react';
 
 export default React.createClass({
+  displayName: 'Token.component',
   propTypes: {
     color: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    remove: PropTypes.func.isRequired
+    remove: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired
   },
 
   render() {
