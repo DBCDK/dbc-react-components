@@ -13,7 +13,6 @@ var AutoCompleteRow = React.createClass({
     href: React.PropTypes.string,
     image: React.PropTypes.string,
     imageComp: React.PropTypes.element,
-    pid: React.PropTypes.string,
     text: React.PropTypes.string
   },
 

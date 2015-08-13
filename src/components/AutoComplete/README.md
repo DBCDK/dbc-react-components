@@ -20,17 +20,17 @@ This autocomplete component takes the following properties when implemented:
 
 ### data (Array)
 The data to be shown in the autocomplete container.  
-This data should be structured as JSON-objects wrapped in an array. See below for an example or take a look in `examples/app.js`.  
+This data should be structured as JSON-objects wrapped in an array. See below for an example.  
 
 ```javascript
   //data example
-  let data = [
+  const data = [
     {
-      label: 'Title',
+      label: 'Title', // could also be href: <a href={'/some/path} >Title</a>
       data: [
         {
           text: 'Test Hest',
-          img: 'http://dummyimage.com/50x50/000/fff'
+          image: 'http://dummyimage.com/50x50/000/fff'
         }
       ]
     },
@@ -39,11 +39,13 @@ This data should be structured as JSON-objects wrapped in an array. See below fo
       data: [
         {
           text: 'Hest Hest',
-          img: ''
+          href: 'some/path/to/go/to',
+          image: ''
+          imageComp: <SomeReactComponent /> // if both img and imageComp the latter will be rendered
         },
         {
           text: 'Fest Hest',
-          img: ''
+          image: ''
         }
       ]
     }];
