@@ -24,7 +24,7 @@ const FilterGuideListElement = React.createClass({
     const {element} = this.props;
     return (
       <li className='filterguide-list-element'>
-        <a className='element-label button' href='#' >{element.value} onClick={this.onClick.bind(null, element)} </a>
+        <a className='element-label button' href='#' onClick={this.onClick.bind(null, element)} >{element.value}</a>
       </li>
     );
   }

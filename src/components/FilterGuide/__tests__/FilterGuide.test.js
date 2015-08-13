@@ -17,6 +17,7 @@ describe('Test the FilterGuide component', () => {
       {value: 'test', type: 'testType'},
       {value: 'test2', type: 'testType2'}
     ];
+
     let select = sinon.spy(); // eslint-disable-line block-scoped-var, no-undef
     let props = {
       elements,
@@ -35,5 +36,6 @@ describe('Test the FilterGuide component', () => {
     // Click on element
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(filterelements[0], 'a'));
     expect(select.calledWith({value: 'test', type: 'testType'})).to.be.ok; // eslint-disable-line no-unused-expressions
+
   });
 });

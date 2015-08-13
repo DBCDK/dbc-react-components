@@ -12,7 +12,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import TokenList from '../TokenList/TokenList.component.js';
-import {updateQueryFromString} from '../../utils/QueryString.util';
+import {updateQueryFromString} from '../../utils/QueryString.util.js';
 
 const SearchField = React.createClass({
   propTypes: {
