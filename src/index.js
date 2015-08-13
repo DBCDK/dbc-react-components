@@ -1,7 +1,13 @@
 'use strict';
 
+import AutoComplete from './components/AutoComplete/AutoComplete/AutoComplete.component.js';
+export {AutoComplete as AutoComplete};
+
 import CoverImageContainer from './components/CoverImage/CoverImageContainer.component.js';
 export {CoverImageContainer as CoverImage};
 
-import AutoComplete from './components/AutoComplete/AutoComplete/AutoComplete.component.js';
-export {AutoComplete as AutoComplete};
+import TokenSearchField from './components/TokenSearchField/TokenSearchField.component.js';
+export {TokenSearchField};
+
+import FilterGuide from './components/FilterGuide/FilterGuide.component';
+export {FilterGuide};
