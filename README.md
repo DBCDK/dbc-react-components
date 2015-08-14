@@ -8,6 +8,6 @@ Common repository for React components developed at DBC.
 
 [AutoComplete](src/components/AutoComplete)  
 [CoverImage](src/components/CoverImage)  
-[FilterGuikde](src/components/FilterGuide)  
+[FilterGuide](src/components/FilterGuide)  
 [TokenSearchField](src/components/TokenSearchField)  
 
