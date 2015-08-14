@@ -9,6 +9,7 @@ module.exports = function() {
   return {
     files: [
       {pattern: 'testlib/phantomPolyfill.js', instrument: false}, // required when testing react components to polyfill the bind() method
+      {pattern: 'node_modules/sinon/pkg/sinon.js', instrument: false},
       {pattern: 'src/**/__tests__/testStore.js', load: false},
       {pattern: 'src/**/*.component.js', load: false},
       {pattern: 'src/**/*.action.js', load: false},
@@ -21,7 +22,7 @@ module.exports = function() {
     ],
 
     preprocessors: {
-      '**/*.js': [file => babel.transform(file.content, {sourceMaps: true})]
+      'src/**/*.js': [file => babel.transform(file.content, {sourceMaps: true})]
     },
 
     postprocessor: webpackPostprocessor,

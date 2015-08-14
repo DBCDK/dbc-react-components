@@ -43,4 +43,31 @@ describe('Test the SearchField component', () => {
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(Tokens[1], 'remove'));
     assert(updateSpy.calledWith([{value: 'test2', index: 2}]), 'called with remaining object');
   });
+
+  it('should not append \'pending\' when props.pending is undefined', () => {
+    const render = TestUtils.createRenderer();
+    render.render(<SearchField query={[]} />);
+
+    const rendered = render.getRenderOutput();
+    const className = rendered.props.children.props.children.props.children[2].props.className;
+    assert.equal(className, 'token-searchfield--spinner', 'pending class is not appended');
+  });
+
+  it('should not append \'pending\' when props.pending is false', () => {
+    const render = TestUtils.createRenderer();
+    render.render(<SearchField pending={false} query={[]} />);
+
+    const rendered = render.getRenderOutput();
+    const className = rendered.props.children.props.children.props.children[2].props.className;
+    assert.equal(className, 'token-searchfield--spinner', 'pending class is not appended');
+  });
+
+  it('should append \'pending\' when props.pending is true', () => {
+    const render = TestUtils.createRenderer();
+    render.render(<SearchField pending={true} query={[]} />);
+
+    const rendered = render.getRenderOutput();
+    const className = rendered.props.children.props.children.props.children[2].props.className;
+    assert.equal(className, 'token-searchfield--spinner pending', 'pending class is appended');
+  });
 });
