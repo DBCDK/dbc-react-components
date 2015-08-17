@@ -7,7 +7,9 @@ No input field is provided within this component as it should be attached an exi
 This autocomplete component takes the following properties when implemented:
 
 ### visible (boolean)
-  Defines whether the autocomplete shuld be visible a not.  
+  Defines whether the autocomplete shuld be visible a not.
+  This is controlled by CSS and the AutoCompleteContainer will always be rendered with the `autocomplete--container` class.
+  In addition, if the `visible` property, is anything but `true` will `autocomplete--container-hidden` be rendered along with the above class which makes it possible to control visiblity through CSS. 
   Default value is `false`  
 
 ```javascript

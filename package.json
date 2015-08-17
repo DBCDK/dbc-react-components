@@ -37,7 +37,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.2.5",
     "mocha-jenkins-reporter": "^0.1.9",
-    "phantomjs": "^1.9.17",
+    "phantomjs": "^1.9.18",
     "sinon": "^1.15.4",
     "wallaby-webpack": "0.0.5",
     "webpack": "^1.10.5"

@@ -52,4 +52,10 @@ describe('Test CoverImageContainer Component', () => {
     const images = dom.getImages(store);
     assert.strictEqual(dom.getImageUrl(images), 'http://moreinfo.addi.dk/2.1/more_info_get.php?id=49173565&type=forside_500&key=ba0f7d4b1a841c3ce09f', 'Got an URL as expected');
   });
+
+  it('Should display the noCoverUrl if defined and no images are defined', () => {
+    const dom = TestUtils.renderIntoDocument(<CoverImageContainer noCoverUrl={'path/to/dummy/img'} pids={[]} prefSize={'detail_500'} />);
+    const images = dom.getImages(store);
+    assert.strictEqual(dom.getImageUrl(images), 'path/to/dummy/img', 'URL to dummy image was rendered as expected');
+  });
 });
