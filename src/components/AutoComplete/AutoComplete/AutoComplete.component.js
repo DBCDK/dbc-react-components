@@ -10,7 +10,7 @@ import AutoCompleteCategory from './../AutoCompleteCategory/AutoCompleteCategory
 
 const AutoComplete = React.createClass({
   displayName: 'AutoCompleteContainer.component',
-  
+
   propTypes: {
     data: React.PropTypes.object,
     visible: React.PropTypes.bool
