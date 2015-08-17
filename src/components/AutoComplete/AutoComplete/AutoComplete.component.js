@@ -9,7 +9,8 @@ import {forIn} from 'lodash';
 import AutoCompleteCategory from './../AutoCompleteCategory/AutoCompleteCategory.component.js';
 
 const AutoComplete = React.createClass({
-  displayName: 'AutoComplete',
+  displayName: 'AutoCompleteContainer.component',
+  
   propTypes: {
     data: React.PropTypes.object,
     visible: React.PropTypes.bool

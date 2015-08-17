@@ -48,7 +48,7 @@ const CoverImageContainer = React.createClass({
   },
 
   getImageUrl(images) {
-    let imgurl = '';
+    let imgurl = this.props.noCoverUrl || '';
     images.forEach((image) => {
       if (image.size === this.props.prefSize) {
         imgurl = image.url;
