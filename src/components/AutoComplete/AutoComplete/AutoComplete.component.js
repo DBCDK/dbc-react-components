@@ -13,6 +13,7 @@ const AutoComplete = React.createClass({
 
   propTypes: {
     data: React.PropTypes.object,
+    errormessage: React.PropTypes.string,
     visible: React.PropTypes.bool
   },
 
@@ -44,7 +45,7 @@ const AutoComplete = React.createClass({
       htmlToRender = (
         <div className={classNames} >
         <div className='autocomplete--category--label-container' >
-          <span className='autocomplete--category--label' >Ingen resultater fundet</span>
+          <span className='autocomplete--category--label' >{this.props.errormessage}</span>
         </div>
       </div>
       );

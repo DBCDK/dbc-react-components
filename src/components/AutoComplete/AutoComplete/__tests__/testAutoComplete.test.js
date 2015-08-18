@@ -40,7 +40,7 @@ describe('Test AutoComplete Component', () => {
   });
 
   it('Assert no results found message when data is empty', () => {
-    const rendered = TestUtils.renderIntoDocument(<AutoComplete visible={true}/>);
+    const rendered = TestUtils.renderIntoDocument(<AutoComplete errormessage="Ingen resultater fundet" visible={true}/>);
     expect(rendered.getDOMNode().innerHTML).to.contain('Ingen resultater fundet');
   });
 });
