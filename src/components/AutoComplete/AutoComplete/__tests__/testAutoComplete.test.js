@@ -38,4 +38,10 @@ describe('Test AutoComplete Component', () => {
     rendered = TestUtils.renderIntoDocument(<AutoComplete visible={'test'}/>);
     expect(rendered.getDOMNode().className).to.contain('autocomplete--container-hidden');
   });
+
+  it('Assert no results found message when data is empty', () => {
+    const rendered = TestUtils.renderIntoDocument(<AutoComplete visible={true}/>);
+    expect(rendered.getDOMNode().innerHTML).to.contain('Ingen resultater fundet');
+  });
 });
+
