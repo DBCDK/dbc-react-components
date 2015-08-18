@@ -38,12 +38,26 @@ const AutoComplete = React.createClass({
     const categories = this.getCategories();
     let classNames = 'autocomplete--container';
     classNames += this.props.visible === true ? '' : ' autocomplete--container-hidden';
+    let htmlToRender = '';
 
-    return (
-      <div className={classNames} >
-        {categories}
+    if (categories.length === 0) {
+      htmlToRender = (
+        <div className={classNames} >
+        <div className='autocomplete--category--label-container' >
+          <span className='autocomplete--category--label' >Ingen resultater fundet</span>
+        </div>
       </div>
-    );
+      );
+    }
+    else {
+      htmlToRender = (
+        <div className={classNames} >
+          {categories}
+        </div>
+      );
+    }
+
+    return htmlToRender;
   }
 });
 
