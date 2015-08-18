@@ -55,3 +55,15 @@ This data should be structured as JSON-objects wrapped in an array. See below fo
     //implemntation example
     <AutoComplete visible={true} data={data} />
 ```
+
+### errormessage (String)
+The errormessage is rendered when no data is availiable in the component, for example when no results are found.
+See below for example usage.
+
+```javascript
+  // errormessage example
+  const errormessage = "This is an error message";
+    
+    //implemntation example
+    <AutoComplete visible={true} errormessage={errormessage} />
+```
