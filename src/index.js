@@ -11,3 +11,6 @@ export {TokenSearchField};
 
 import FilterGuide from './components/FilterGuide/FilterGuide.component';
 export {FilterGuide};
+
+import OrderLink from './components/OrderLink/OrderLink.component';
+export {OrderLink};
