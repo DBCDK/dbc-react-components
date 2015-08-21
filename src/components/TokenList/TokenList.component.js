@@ -50,7 +50,8 @@ export default React.createClass({
   displayName: 'TokenList.component',
   propTypes: {
     query: PropTypes.array.isRequired,
-    remove: PropTypes.func.isRequired
+    remove: PropTypes.func.isRequired,
+    translations: PropTypes.object
   },
 
   getInitialState() {
@@ -65,20 +66,27 @@ export default React.createClass({
     };
   },
 
+  getTranslation(type, text) {
+    if (this.props.translations && type !== 'text' && this.props.translations[text]) {
+      return this.props.translations[text];
+    }
+
+    return text;
+  },
+
   render() {
     const {query, remove} = this.props;
 
     // The order of tokens is reversed to handle that last token should be visible.
     // In the CSS direction is set to rlt, reversing the order again
     const tokens = query.map((element, index)=> {
-
       return (
         <Token
           color={getColor(element.type)}
           index={element.index}
           key={index}
           remove={remove.bind(null, element)}
-          text={element.value}
+          text={this.getTranslation(element.type, element.value)}
           />
       );
     }).reverse();

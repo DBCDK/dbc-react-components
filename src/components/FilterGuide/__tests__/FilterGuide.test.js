@@ -17,9 +17,11 @@ describe('Test the FilterGuide component', () => {
       {value: 'test', type: 'testType'},
       {value: 'test2', type: 'testType2'}
     ];
+    let categories = [{type: 'term.workType', value: 'Movie', displayValue: 'Film', cssClass: 'worktype'}];
 
     let select = sinon.spy(); // eslint-disable-line block-scoped-var, no-undef
     let props = {
+      categories,
       elements,
       select
     };
@@ -27,15 +29,14 @@ describe('Test the FilterGuide component', () => {
     let element = React.createElement(FilterGuide, props);
     let dom = TestUtils.renderIntoDocument(element);
     let filterelements = TestUtils.scryRenderedComponentsWithType(dom, FilterGuideListElement);
-    expect(filterelements).to.have.length(2);
+    expect(filterelements).to.have.length(3);
 
     // Test first element has label
-    let label = TestUtils.findRenderedDOMComponentWithClass(filterelements[0], 'element-label').getDOMNode().textContent;
+    let label = TestUtils.findRenderedDOMComponentWithClass(filterelements[1], 'element-label').getDOMNode().textContent;
     expect(label).to.equal('test');
 
     // Click on element
-    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(filterelements[0], 'a'));
-    expect(select.calledWith({value: 'test', type: 'testType'})).to.be.ok; // eslint-disable-line no-unused-expressions
-
+    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(filterelements[1], 'a'));
+    expect(select.calledWith({value: 'test', type: 'testType'})).to.be.ok; // eslint-disable-line block-scoped-var, no-unused-expressions
   });
 });
