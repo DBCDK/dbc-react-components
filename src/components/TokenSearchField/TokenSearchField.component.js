@@ -43,11 +43,17 @@ const SearchField = React.createClass({
     // make sure form is not submitted, it is handled with js
     // @todo implement fallback for when js is failing
     event.preventDefault();
+
+    // removing focus from the textfield
+    React.findDOMNode(this.refs.searchfield).blur();
+
     // update query with the updated text string
     let text = this.state.text && this.state.text.trim() || '';
     let query = updateQueryFromString(text, this.props.query);
+
     // Send updated query to parent component
     this.props.update(query);
+
     // Update local state: remove focus and empty textfield
     this.setState({
       text: '',
@@ -100,11 +106,12 @@ const SearchField = React.createClass({
                      onClick={this.setFocus.bind(this, true)}
                      onFocus={this.setFocus.bind(this, true)}
                      placeholder={this.props.placeholder}
+                     ref='searchfield'
                      type='text'
                      value={text || ''}
                 />
             </li>
-            <li className={spinnerClass}></li>
+            <li className={spinnerClass} ></li>
             <li className='submit' >
               <input className='button small' onClick={this.onSubmit} type='submit' value='søg' />
             </li>

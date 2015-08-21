@@ -26,5 +26,5 @@ let elements = [
   />
 ```
 
-Below the searchfiled a `<li>`-element with classname `'token-searchfield--spinner'` is rendered (`<li className='token-searchfield--spinner'></li>`).  
-If the compoennt is given a `pending`-property with a thruthy value, pending will be given as an additional class to `<li>`-element leaving an opportunity to render ie. a spinner next to the inputfield (`<li className='token-searchfield--spinner pending'></li>`).
+Below the searchfield a `<li>`-element with classname `'token-searchfield--spinner'` is rendered (`<li className='token-searchfield--spinner'></li>`).  
+If the component is given a `pending`-property with a thruthy value, pending will be given as an additional class to `<li>`-element leaving an opportunity to render ie. a spinner next to the inputfield (`<li className='token-searchfield--spinner pending'></li>`).

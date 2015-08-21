@@ -15,7 +15,8 @@ const CoverImageContainer = React.createClass({
   propTypes: {
     noCoverUrl: React.PropTypes.string,
     pids: React.PropTypes.array,
-    prefSize: React.PropTypes.string.isRequired
+    prefSize: React.PropTypes.string.isRequired,
+    rewriteImgUrl: React.PropTypes.func
   },
 
   getInitialState() {
@@ -54,6 +55,11 @@ const CoverImageContainer = React.createClass({
         imgurl = image.url;
       }
     });
+
+    if (this.props.rewriteImgUrl) {
+      imgurl = this.props.rewriteImgUrl(imgurl);
+    }
+
     return imgurl;
   },
 

@@ -79,12 +79,12 @@ export default React.createClass({
 
     // The order of tokens is reversed to handle that last token should be visible.
     // In the CSS direction is set to rlt, reversing the order again
-    const tokens = query.map((element)=> {
+    const tokens = query.map((element, index)=> {
       return (
         <Token
           color={getColor(element.type)}
           index={element.index}
-          key={element.index}
+          key={index}
           remove={remove.bind(null, element)}
           text={this.getTranslation(element.type, element.value)}
           />
