@@ -8,10 +8,11 @@
 import React from 'react';
 import FilterGuideList from './FilterGuideList.component.js';
 
-export const FilterGuide = React.createClass({
+const FilterGuide = React.createClass({
   displayName: 'FilterGuide',
 
   propTypes: {
+    categories: React.PropTypes.array.isRequired,
     elements: React.PropTypes.array.isRequired,
     select: React.PropTypes.func.isRequired
   },

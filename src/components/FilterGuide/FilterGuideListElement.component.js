@@ -22,9 +22,11 @@ const FilterGuideListElement = React.createClass({
 
   render() {
     const {element} = this.props;
+    let cssClassname = element.cssClass ? 'element-label-' + element.cssClass + ' ' : '';
+    cssClassname += 'element-label button';
     return (
       <li className='filterguide-list-element'>
-        <a className='element-label button' href='#' onClick={this.onClick.bind(null, element)} >{element.value}</a>
+        <a className={cssClassname} href='#' onClick={this.onClick.bind(null, element)} >{element.displayValue || element.value}</a>
       </li>
     );
   }

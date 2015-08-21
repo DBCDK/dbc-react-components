@@ -40,4 +40,21 @@ describe('Test the TokenList component', () => {
     // Test state is updated
     expect(remove.called).to.be.ok; // eslint-disable-line no-unused-expressions
   });
+
+  it('displays buttons with correct translations', () => {
+    let state = {
+      query: [{value: 'test', type: 'text', index: 1}, {value: 'Movie', index: 'term.workTypeMovie0', type: 'term.workType'}],
+      remove: sinon.spy(), // eslint-disable-line no-undef
+      translations: {
+        Movie: 'Film'
+      }
+    };
+
+    // Create TokenList Compontent
+    let element = React.createElement(TokenList, state);
+    let dom = TestUtils.renderIntoDocument(element);
+    // Test state
+    expect(dom.state.query).to.have.length(2);
+    expect(dom.getDOMNode().innerHTML).to.have.string('Film');
+  });
 });

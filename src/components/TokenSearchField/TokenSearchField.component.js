@@ -22,6 +22,7 @@ const SearchField = React.createClass({
     pending: React.PropTypes.bool,
     placeholder: React.PropTypes.string,
     query: PropTypes.array.isRequired,
+    translations: PropTypes.object,
     update: PropTypes.func.isRequired
   },
 
@@ -89,7 +90,7 @@ const SearchField = React.createClass({
           <ul className='searchfield-wrapper' >
             <li className='tokens' >
               <div className={tokenClasses} >
-                <TokenList query={query} remove={this.removeElement} />
+                <TokenList query={query} remove={this.removeElement} translations={this.props.translations} />
               </div>
             </li>
             <li className='inputfield' >
