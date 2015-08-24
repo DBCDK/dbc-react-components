@@ -12,10 +12,10 @@ const OrderLink = React.createClass({
 
   displayName: 'OrderLink',
   propTypes: {
-    agencyId: React.PropTypes.string,
-    linkText: React.PropTypes.string,
-    orderUrl: React.PropTypes.string,
-    pids: React.PropTypes.array
+    agencyId: React.PropTypes.string.isRequired,
+    linkText: React.PropTypes.string.isRequired,
+    orderUrl: React.PropTypes.string.isRequired,
+    pids: React.PropTypes.array.isRequired
   },
 
   getInitialState() {
