@@ -21,7 +21,7 @@ const OrderLink = React.createClass({
   getInitialState() {
     return {
       canOrder: false,
-      orderUrl: this.props.orderUrl
+      orderUrl: this.props.orderUrl + '&pickupAgency=' + this.props.agencyId
     };
   },
 

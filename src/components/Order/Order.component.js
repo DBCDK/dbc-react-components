@@ -13,35 +13,31 @@ const Order = React.createClass({
   },
 
   propTypes: {
-    creator: React.PropTypes.string,
-    pickupAgency: React.PropTypes.string.isRequired,
-    pids: React.PropTypes.array.isRequired,
-    title: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string.isRequired,
-    workPid: React.PropTypes.string.isRequired
+    order: React.PropTypes.object.isRequired
   },
 
   render() {
-    const title = this.props.title;
-    const type = this.props.type;
-    const creator = this.props.creator;
-    const pickupAgency = this.props.pickupAgency;
-    const workPid = this.props.workPid;
-    const pids = this.props.pids;
+    const title = this.props.order.title;
+    const type = this.props.order.type;
+    const creator = this.props.order.creator;
+    const pickupAgency = this.props.order.pickupAgency;
+    const ids = this.props.order.ids;
 
-    const cancelLink = '/work?' + workPid;
+    const workId = ids.replace(/,.*/, '');
+
+    const cancelLink = '/work?id=' + workId;
 
     const cancelOrder = <a className={'cancel-order-button button'} href={cancelLink}>Annuller</a>;
 
     let orderInfo = orderInfo = title + ' (' + type + ')';
 
-    if (typeof (creator) === String) {
+    if (creator !== '') {
       orderInfo = creator + ': ' + title + ' (' + type + ')';
     }
 
     const libraryInfo = 'Til afhentning på dit bibliotek (' + pickupAgency + ')';
 
-    const orderLink = '/receipt?pids=' + pids + '&pickupAgency=' + pickupAgency;
+    const orderLink = '/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency;
 
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
 

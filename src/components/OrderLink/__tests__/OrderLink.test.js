@@ -21,30 +21,32 @@ describe('Test OrderLink Component', () => {
   });
 
   it('Assert type of rendered element', () => {
-    render.render(<OrderLink />);
+    const path = 'this/is/a/path/';
+    const agencyId = '710100';
+    const linkText = 'Bestil Bog';
+    const pids = ['870970-basis:28183488'];
+    render.render(<OrderLink agencyId={agencyId} linkText={linkText} orderUrl={path} pids={pids}/>);
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'a', 'Component rendered element of type \'a\'');
   });
 
-  it('Assert href is undefined when orderUrl is not given as prop', () => {
-    render.render(<OrderLink />);
-    const rendered = render.getRenderOutput();
-    assert.isUndefined(rendered.props.href);
-  });
-
   it('Assert href is eq when orderUrl is given as prop', () => {
     const path = 'this/is/a/path/';
-    render.render(<OrderLink orderUrl={path} />);
+    const agencyId = '710100';
+    const linkText = 'Bestil Bog';
+    const pids = ['870970-basis:28183488'];
+    render.render(<OrderLink agencyId={agencyId} linkText={linkText} orderUrl={path} pids={pids}/>);
     const rendered = render.getRenderOutput();
     assert.isDefined(rendered.props.href);
-    assert.strictEqual(path, rendered.props.href);
+    assert.strictEqual('this/is/a/path/&pickupAgency=710100', rendered.props.href);
   });
 
   it('Assert agencyId and pids are undefined when given as props', () => {
     const path = 'this/is/a/path/';
     const agencyId = '710100';
+    const linkText = 'Bestil Bog';
     const pids = ['870970-basis:28183488'];
-    render.render(<OrderLink agencyId={agencyId} orderUrl={path} pids={pids} />);
+    render.render(<OrderLink agencyId={agencyId} linkText={linkText} orderUrl={path} pids={pids}/>);
     const rendered = render.getRenderOutput();
     assert.isUndefined(rendered.props.agencyId);
     assert.isUndefined(rendered.props.pids);
