@@ -14,3 +14,6 @@ export {FilterGuide};
 
 import OrderLink from './components/OrderLink/OrderLink.component';
 export {OrderLink};
+
+import Order from './components/Order/Order.component';
+export {Order};
