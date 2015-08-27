@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Testing OrderLink.component.js
+ * Testing Order.component.js
  */
 
 import React from 'react/addons';

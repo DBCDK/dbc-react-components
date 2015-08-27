@@ -37,7 +37,8 @@ const Order = React.createClass({
 
     const libraryInfo = 'Til afhentning på dit bibliotek (' + pickupAgency + ')';
 
-    const orderLink = '/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency;
+    const orderLink = '/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency + '&title='
+      + encodeURIComponent(title) + '&creator=' + encodeURIComponent(creator) + '&type=' + encodeURIComponent(type);
 
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
 
