@@ -17,3 +17,6 @@ export {OrderLink};
 
 import Order from './components/Order/Order.component';
 export {Order};
+
+import Receipt from './components/Receipt/Receipt.component';
+export {Receipt};
