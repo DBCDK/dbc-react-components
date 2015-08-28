@@ -62,9 +62,11 @@ const Receipt = React.createClass({
 
     return (<div className='receipt--container'>
         <div className='receipt small-12 medium-6 large-4'>
-          <div className="receipt--headline">{this.state.headline}</div>
-          <div className="receipt--info">{this.state.orderInfo}</div>
-          <div className="receipt--library">{this.state.libraryInfo}</div>
+          <div className="receipt--info">
+            <div className="receipt--headline">{this.state.headline}</div>
+            <div className="receipt--bibliographic">{this.state.orderInfo}</div>
+            <div className="receipt--library">{this.state.libraryInfo}</div>
+          </div>
         </div>
       </div>
     );
