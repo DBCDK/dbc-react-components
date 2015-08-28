@@ -8,11 +8,10 @@ import React from 'react';
 
 const Order = React.createClass({
 
-  displayName: function() {
-    return 'Order';
-  },
+  displayName: 'Order',
 
   propTypes: {
+    coverImage: React.PropTypes.object,
     order: React.PropTypes.object.isRequired
   },
 
@@ -22,6 +21,7 @@ const Order = React.createClass({
     const creator = this.props.order.creator;
     const pickupAgency = this.props.order.pickupAgency;
     const ids = this.props.order.ids;
+    const coverImage = this.props.coverImage;
 
     const workId = ids.replace(/,.*/, '');
 
@@ -43,15 +43,18 @@ const Order = React.createClass({
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
 
     return (<div className='order--container'>
-        <div className='order small-12 medium-6 large-4'>
+        <div className='image small-4 medium-6 large-4'>
+          {coverImage}
+        </div>
+        <div className='order small-8 medium-6 large-4'>
           <div className="order--info">
             <div className="order--headline">Du er i gang med at bestille:</div>
             <div className="order--bibliographic">{orderInfo}</div>
             <div className="order--library">{libraryInfo}</div>
           </div>
-          {cancelOrder}
-          {placeOrder}
         </div>
+        {cancelOrder}
+        {placeOrder}
       </div>
     );
   }

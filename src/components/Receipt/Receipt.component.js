@@ -35,6 +35,7 @@ const Receipt = React.createClass({
     const title = this.props.receipt.title;
     const creator = this.props.receipt.creator;
     const type = this.props.receipt.type;
+
     let orderInfo = title + ' (' + type + ')';
 
     if (creator !== '') {
