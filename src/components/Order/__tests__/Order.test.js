@@ -43,7 +43,7 @@ describe('Test Order Component', () => {
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
     const text = 'This is a title (Bog)';
-    assert.strictEqual(text, rendered.props.children._store.props.children[0]._store.props.children[1]._store.props.children);
+    assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[1]._store.props.children);
   });
 
   it('Assert element width correct classes', () => {
@@ -56,7 +56,7 @@ describe('Test Order Component', () => {
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
     const classes = 'place-order-button button';
-    assert.strictEqual(classes, rendered.props.children.props.children[2]._store.props.className);
+    assert.strictEqual(classes, rendered.props.children[3]._store.props.className);
   });
 
 });
