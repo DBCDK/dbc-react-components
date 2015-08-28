@@ -11,9 +11,7 @@ import ReceiptStore from './Receipt.store.js';
 
 const Receipt = React.createClass({
 
-  displayName: function() {
-    return 'Receipt';
-  },
+  displayName: 'Receipt',
 
   propTypes: {
     receipt: React.PropTypes.object.isRequired
@@ -37,7 +35,7 @@ const Receipt = React.createClass({
     const title = this.props.receipt.title;
     const creator = this.props.receipt.creator;
     const type = this.props.receipt.type;
-    let orderInfo = orderInfo = title + ' (' + type + ')';
+    let orderInfo = title + ' (' + type + ')';
 
     if (creator !== '') {
       orderInfo = creator + ': ' + title + ' (' + type + ')';
@@ -62,11 +60,11 @@ const Receipt = React.createClass({
 
   render() {
 
-    return (<div className='receipt-container'>
+    return (<div className='receipt--container'>
         <div className='receipt small-12 medium-6 large-4'>
-          <div className="receipt-headline">{this.state.headline}</div>
-          <div className="receipt-info">{this.state.orderInfo}</div>
-          <div className="library">{this.state.libraryInfo}</div>
+          <div className="receipt--headline">{this.state.headline}</div>
+          <div className="receipt--info">{this.state.orderInfo}</div>
+          <div className="receipt--library">{this.state.libraryInfo}</div>
         </div>
       </div>
     );
