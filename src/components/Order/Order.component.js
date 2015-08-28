@@ -42,11 +42,13 @@ const Order = React.createClass({
 
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
 
-    return (<div className='order-container'>
+    return (<div className='order--container'>
         <div className='order small-12 medium-6 large-4'>
-          <div className="order-headline">Du er i gang med at bestille:</div>
-          <div className="order-info">{orderInfo}</div>
-          <div className="library">{libraryInfo}</div>
+          <div className="order--info">
+            <div className="order--headline">Du er i gang med at bestille:</div>
+            <div className="order--bibliographic">{orderInfo}</div>
+            <div className="order--library">{libraryInfo}</div>
+          </div>
           {cancelOrder}
           {placeOrder}
         </div>
