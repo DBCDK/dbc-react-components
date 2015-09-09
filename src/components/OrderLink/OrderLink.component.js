@@ -17,6 +17,7 @@ const OrderLink = React.createClass({
     coverImagePids: React.PropTypes.array.isRequired,
     linkText: React.PropTypes.string.isRequired,
     orderUrl: React.PropTypes.string.isRequired,
+    pickupAgencyId: React.PropTypes.string.isRequired,
     pids: React.PropTypes.array.isRequired,
     userIsLoggedIn: React.PropTypes.bool.isRequired
   },
@@ -24,7 +25,7 @@ const OrderLink = React.createClass({
   getInitialState() {
     return {
       canOrder: false,
-      orderUrl: this.props.orderUrl + '&pickupAgency=' + this.props.agencyId + '&borrowerId=' + this.props.borrowerId + '&coverImageIds=' + this.props.coverImagePids
+      orderUrl: this.props.orderUrl + '&pickupAgency=' + this.props.pickupAgencyId + '&borrowerId=' + this.props.borrowerId + '&coverImageIds=' + this.props.coverImagePids
     };
   },
 
