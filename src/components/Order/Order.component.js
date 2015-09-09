@@ -21,7 +21,6 @@ const Order = React.createClass({
     const creator = this.props.order.creator;
     const pickupAgency = this.props.order.pickupAgency;
     const borrowerId = this.props.order.borrowerId;
-    const userId = this.props.order.userId;
     const ids = this.props.order.ids;
     const coverImage = this.props.coverImage;
 
@@ -50,11 +49,11 @@ const Order = React.createClass({
         <div className="order--library">{libraryInfo}</div>
       </div>);
 
-    if (pickupAgency === '' || userId === '') {
+    if (pickupAgency === '' || borrowerId === '') {
       placeOrder = '';
       cancelOrder = '';
       let orderHeadline = '';
-      if (userId === '') {
+      if (borrowerId === '') {
         orderHeadline = 'Du skal gemme dit lånerId i din profil';
       }
       else {
