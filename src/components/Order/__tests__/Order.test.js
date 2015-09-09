@@ -72,10 +72,10 @@ describe('Test Order Component', () => {
     assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
   });
 
-  it('Assert element with no user id', () => {
+  it('Assert element with no borrower id', () => {
     const order = {
       pickupAgency: '710100',
-      userId: '',
+      borrowerId: '',
       title: 'This is a title',
       type: 'Bog',
       ids: '870970-basis:28183488'
