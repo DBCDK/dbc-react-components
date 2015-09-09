@@ -54,7 +54,7 @@ const Order = React.createClass({
       cancelOrder = '';
       let orderHeadline = 'Du skal vælge et favoritbibliotek for at kunne bestille';
       let buttonText = 'bibliotek';
-      if (borrowerId === '') {
+      if (borrowerId === '' && pickupAgency !== '') {
         orderHeadline = 'Du skal gemme dit låner id i din profil';
         buttonText = 'låner id';
       }
