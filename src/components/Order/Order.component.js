@@ -20,6 +20,7 @@ const Order = React.createClass({
     const type = this.props.order.type;
     const creator = this.props.order.creator;
     const pickupAgency = this.props.order.pickupAgency;
+    const borrowerId = this.props.order.borrowerId;
     const userId = this.props.order.userId;
     const ids = this.props.order.ids;
     const coverImage = this.props.coverImage;
@@ -38,7 +39,7 @@ const Order = React.createClass({
 
     const libraryInfo = 'Til afhentning på dit bibliotek (' + pickupAgency + ')';
 
-    const orderLink = '/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency + '&title='
+    const orderLink = '/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency + '&borrowerId=' + borrowerId + '&title='
       + encodeURIComponent(title) + '&creator=' + encodeURIComponent(creator) + '&type=' + encodeURIComponent(type);
 
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
