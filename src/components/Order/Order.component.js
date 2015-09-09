@@ -20,6 +20,7 @@ const Order = React.createClass({
     const type = this.props.order.type;
     const creator = this.props.order.creator;
     const pickupAgency = this.props.order.pickupAgency;
+    const userId = this.props.order.userId;
     const ids = this.props.order.ids;
     const coverImage = this.props.coverImage;
 
@@ -48,13 +49,20 @@ const Order = React.createClass({
         <div className="order--library">{libraryInfo}</div>
       </div>);
 
-    if (pickupAgency === '') {
+    if (pickupAgency === '' || userId === '') {
       placeOrder = '';
       cancelOrder = '';
+      let orderHeadline = '';
+      if (userId === '') {
+        orderHeadline = 'Du skal gemme dit lånerId i din profil';
+      }
+      else {
+        orderHeadline = 'Du skal vælge et favoritbibliotek for at kunne bestille';
+      }
       ordering = (<div className="order--info">
-        <div className="order--headline">Du skal vælge et favoritbibliotek for at kunne bestille</div>
+        <div className="order--headline">{orderHeadline}</div>
         <div className="order--bibliographic">{orderInfo}</div>
-        <a className={'library-button button'} href='/librarysuggest'>Tilføje bibliotek</a>
+        <a className={'library-button button'} href='/profile'>Tilføje bibliotek</a>
       </div>);
     }
 

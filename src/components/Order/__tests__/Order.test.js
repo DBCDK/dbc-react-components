@@ -72,4 +72,18 @@ describe('Test Order Component', () => {
     assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
   });
 
+  it('Assert element with no user id', () => {
+    const order = {
+      pickupAgency: '710100',
+      userId: '',
+      title: 'This is a title',
+      type: 'Bog',
+      ids: '870970-basis:28183488'
+    };
+    render.render(<Order order={order} />);
+    const rendered = render.getRenderOutput();
+    const text = 'Du skal gemme dit lånerId i din profil';
+    assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
+  });
+
 });
