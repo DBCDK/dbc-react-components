@@ -44,6 +44,7 @@ describe('Test OrderLink Component', () => {
     const agencyId = '710100';
     const borrowerId = '1231231230';
     const linkText = 'Bestil Bog';
+    const pickupAgencyId = '710117';
     const pids = ['870970-basis:28183488'];
     const coverImagePids = ['870970-basis:28183488'];
     const userIsLoggedIn = true;
@@ -52,11 +53,12 @@ describe('Test OrderLink Component', () => {
       coverImagePids={coverImagePids}
       linkText={linkText}
       orderUrl={path}
+      pickupAgencyId={pickupAgencyId}
       pids={pids}
       userIsLoggedIn={userIsLoggedIn}/>);
     const rendered = render.getRenderOutput();
     assert.isDefined(rendered.props.href);
-    assert.strictEqual('this/is/a/path/&pickupAgency=710100&borrowerId=1231231230&coverImageIds=870970-basis:28183488', rendered.props.href);
+    assert.strictEqual('this/is/a/path/&pickupAgency=710117&borrowerId=1231231230&coverImageIds=870970-basis:28183488', rendered.props.href);
   });
 
   it('Assert agencyId and pids are undefined when given as props', () => {
