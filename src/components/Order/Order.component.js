@@ -52,17 +52,16 @@ const Order = React.createClass({
     if (pickupAgency === '' || borrowerId === '') {
       placeOrder = '';
       cancelOrder = '';
-      let orderHeadline = '';
+      let orderHeadline = 'Du skal vælge et favoritbibliotek for at kunne bestille';
+      let buttonText = 'bibliotek';
       if (borrowerId === '') {
-        orderHeadline = 'Du skal gemme dit lånerId i din profil';
-      }
-      else {
-        orderHeadline = 'Du skal vælge et favoritbibliotek for at kunne bestille';
+        orderHeadline = 'Du skal gemme dit låner id i din profil';
+        buttonText = 'låner id';
       }
       ordering = (<div className="order--info">
         <div className="order--headline">{orderHeadline}</div>
         <div className="order--bibliographic">{orderInfo}</div>
-        <a className={'library-button button'} href='/profile'>Tilføje bibliotek</a>
+        <a className={'library-button button'} href='/profile'>Tilføj {buttonText}</a>
       </div>);
     }
 

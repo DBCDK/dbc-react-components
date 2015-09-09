@@ -82,7 +82,7 @@ describe('Test Order Component', () => {
     };
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
-    const text = 'Du skal gemme dit lånerId i din profil';
+    const text = 'Du skal gemme dit låner id i din profil';
     assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
   });
 
