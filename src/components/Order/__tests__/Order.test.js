@@ -46,7 +46,7 @@ describe('Test Order Component', () => {
     assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[1]._store.props.children);
   });
 
-  it('Assert element width correct classes', () => {
+  it('Assert element with correct classes', () => {
     const order = {
       pickupAgency: '710100',
       title: 'This is a title',
@@ -57,6 +57,19 @@ describe('Test Order Component', () => {
     const rendered = render.getRenderOutput();
     const classes = 'place-order-button button';
     assert.strictEqual(classes, rendered.props.children[3]._store.props.className);
+  });
+
+  it('Assert element with no agency chosen', () => {
+    const order = {
+      pickupAgency: '',
+      title: 'This is a title',
+      type: 'Bog',
+      ids: '870970-basis:28183488'
+    };
+    render.render(<Order order={order} />);
+    const rendered = render.getRenderOutput();
+    const text = 'Du skal vælge et favoritbibliotek for at kunne bestille';
+    assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
   });
 
 });

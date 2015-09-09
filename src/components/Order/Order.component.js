@@ -27,7 +27,7 @@ const Order = React.createClass({
 
     const cancelLink = '/work?id=' + workId;
 
-    const cancelOrder = <a className={'cancel-order-button button'} href={cancelLink}>Annuller</a>;
+    let cancelOrder = <a className={'cancel-order-button button'} href={cancelLink}>Annuller</a>;
 
     let orderInfo = orderInfo = title + ' (' + type + ')';
 
@@ -42,16 +42,28 @@ const Order = React.createClass({
 
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
 
+    let ordering = (<div className="order--info">
+        <div className="order--headline">Du er i gang med at bestille:</div>
+        <div className="order--bibliographic">{orderInfo}</div>
+        <div className="order--library">{libraryInfo}</div>
+      </div>);
+
+    if (pickupAgency === '') {
+      placeOrder = '';
+      cancelOrder = '';
+      ordering = (<div className="order--info">
+        <div className="order--headline">Du skal vælge et favoritbibliotek for at kunne bestille</div>
+        <div className="order--bibliographic">{orderInfo}</div>
+        <a className={'library-button button'} href='/librarysuggest'>Tilføje bibliotek</a>
+      </div>);
+    }
+
     return (<div className='order--container'>
         <div className='image small-4 medium-6 large-4'>
           {coverImage}
         </div>
         <div className='order small-8 medium-6 large-4'>
-          <div className="order--info">
-            <div className="order--headline">Du er i gang med at bestille:</div>
-            <div className="order--bibliographic">{orderInfo}</div>
-            <div className="order--library">{libraryInfo}</div>
-          </div>
+          {ordering}
         </div>
         {cancelOrder}
         {placeOrder}
