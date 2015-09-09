@@ -16,7 +16,8 @@ const OrderLink = React.createClass({
     coverImagePids: React.PropTypes.array.isRequired,
     linkText: React.PropTypes.string.isRequired,
     orderUrl: React.PropTypes.string.isRequired,
-    pids: React.PropTypes.array.isRequired
+    pids: React.PropTypes.array.isRequired,
+    userIsLoggedIn: React.PropTypes.bool.isRequired
   },
 
   getInitialState() {
@@ -27,10 +28,21 @@ const OrderLink = React.createClass({
   },
 
   componentDidMount() {
-    OrderLinkStore.listen(this.setOrderPossible);
-    if (this.props.pids) {
-      OrderLinkActions({agencyId: this.props.agencyId, pids: this.props.pids});
+    if (this.props.agencyId === '') {
+      this.setOrderAlwaysPossible();
     }
+    else if (this.props.userIsLoggedIn === true) {
+      OrderLinkStore.listen(this.setOrderPossible);
+      if (this.props.pids) {
+        OrderLinkActions({agencyId: this.props.agencyId, pids: this.props.pids});
+      }
+    }
+  },
+
+  setOrderAlwaysPossible() {
+    this.setState({
+      canOrder: true
+    });
   },
 
   setOrderPossible(store) {
