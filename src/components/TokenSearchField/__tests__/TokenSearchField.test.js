@@ -64,7 +64,7 @@ describe('Test the SearchField component', () => {
 
   it('should append \'pending\' when props.pending is true', () => {
     const render = TestUtils.createRenderer();
-    render.render(<SearchField pending={true} query={[]} />); // eslint-disable-line jsx-boolean-value
+    render.render(<SearchField pending={true} query={[]} />); // eslint-disable-line react/jsx-boolean-value
 
     const rendered = render.getRenderOutput();
     const className = rendered.props.children.props.children.props.children[2].props.className;
