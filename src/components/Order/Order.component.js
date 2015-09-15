@@ -30,7 +30,7 @@ const Order = React.createClass({
 
     let cancelOrder = <a className={'cancel-order-button button'} href={cancelLink}>Annuller</a>;
 
-    let orderInfo = orderInfo = title + ' (' + type + ')';
+    let orderInfo = title + ' (' + type + ')';
 
     if (creator !== '') {
       orderInfo = creator + ': ' + title + ' (' + type + ')';
@@ -38,7 +38,7 @@ const Order = React.createClass({
 
     const libraryInfo = 'Til afhentning på dit bibliotek (' + pickupAgency + ')';
 
-    const orderLink = '/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency + '&borrowerId=' + borrowerId + '&title='
+    const orderLink = '/work/receipt?ids=' + ids + '&pickupAgency=' + pickupAgency + '&borrowerId=' + borrowerId + '&title='
       + encodeURIComponent(title) + '&creator=' + encodeURIComponent(creator) + '&type=' + encodeURIComponent(type);
 
     let placeOrder = <a className={'place-order-button button'} href={orderLink}>Ok</a>;
