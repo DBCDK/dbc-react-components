@@ -28,13 +28,16 @@ describe('Test OrderLink Component', () => {
     const pids = ['870970-basis:28183488'];
     const coverImagePids = ['870970-basis:28183488'];
     const userIsLoggedIn = true;
-    render.render(<OrderLink agencyId={agencyId}
-      borrowerId={borrowerId}
-      coverImagePids={coverImagePids}
-      linkText={linkText}
-      orderUrl={path}
-      pids={pids}
-      userIsLoggedIn={userIsLoggedIn}/>);
+    render.render(
+      <OrderLink agencyId={agencyId}
+                 borrowerId={borrowerId}
+                 coverImagePids={coverImagePids}
+                 linkText={linkText}
+                 orderUrl={path}
+                 pickupAgencyId={''}
+                 pids={pids}
+                 userIsLoggedIn={userIsLoggedIn} />
+    );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'a', 'Component rendered element of type \'a\'');
   });
@@ -49,13 +52,13 @@ describe('Test OrderLink Component', () => {
     const coverImagePids = ['870970-basis:28183488'];
     const userIsLoggedIn = true;
     render.render(<OrderLink agencyId={agencyId}
-      borrowerId={borrowerId}
-      coverImagePids={coverImagePids}
-      linkText={linkText}
-      orderUrl={path}
-      pickupAgencyId={pickupAgencyId}
-      pids={pids}
-      userIsLoggedIn={userIsLoggedIn}/>);
+                             borrowerId={borrowerId}
+                             coverImagePids={coverImagePids}
+                             linkText={linkText}
+                             orderUrl={path}
+                             pickupAgencyId={pickupAgencyId}
+                             pids={pids}
+                             userIsLoggedIn={userIsLoggedIn} />);
     const rendered = render.getRenderOutput();
     assert.isDefined(rendered.props.href);
     assert.strictEqual('this/is/a/path/&pickupAgency=710117&borrowerId=1231231230&coverImageIds=870970-basis:28183488', rendered.props.href);
@@ -70,12 +73,13 @@ describe('Test OrderLink Component', () => {
     const coverImagePids = ['870970-basis:28183488'];
     const userIsLoggedIn = true;
     render.render(<OrderLink agencyId={agencyId}
-      borrowerId={borrowerId}
-      coverImagePids={coverImagePids}
-      linkText={linkText}
-      orderUrl={path}
-      pids={pids}
-      userIsLoggedIn={userIsLoggedIn}/>);
+                             borrowerId={borrowerId}
+                             coverImagePids={coverImagePids}
+                             linkText={linkText}
+                             orderUrl={path}
+                             pickupAgencyId={''}
+                             pids={pids}
+                             userIsLoggedIn={userIsLoggedIn} />);
     const rendered = render.getRenderOutput();
     assert.isUndefined(rendered.props.agencyId);
     assert.isUndefined(rendered.props.pids);
@@ -91,12 +95,13 @@ describe('Test OrderLink Component', () => {
     const text = 'Bestil bog';
     const userIsLoggedIn = true;
     render.render(<OrderLink agencyId={agencyId}
-      borrowerId={borrowerId}
-      coverImagePids={coverImagePids}
-      linkText={linkText}
-      orderUrl={path}
-      pids={pids}
-      userIsLoggedIn={userIsLoggedIn}/>);
+                             borrowerId={borrowerId}
+                             coverImagePids={coverImagePids}
+                             linkText={linkText}
+                             orderUrl={path}
+                             pickupAgencyId={''}
+                             pids={pids}
+                             userIsLoggedIn={userIsLoggedIn} />);
     const rendered = render.getRenderOutput();
     assert.isDefined(rendered.props.children);
     assert.strictEqual(text, rendered.props.children);

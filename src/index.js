@@ -6,6 +6,9 @@ export {AutoComplete as AutoComplete};
 import CoverImageContainer from './components/CoverImage/CoverImageContainer.component.js';
 export {CoverImageContainer as CoverImage};
 
+import DisplayResult from './components/ResultListView/DisplayResult/DisplayResult.component.js';
+export {DisplayResult as ResultDisplay};
+
 import FilterGuide from './components/FilterGuide/FilterGuide.component.js';
 export {FilterGuide};
 
@@ -23,4 +26,3 @@ export {Receipt};
 
 import TokenSearchField from './components/TokenSearchField/TokenSearchField.component.js';
 export {TokenSearchField};
-
