@@ -17,6 +17,13 @@ module.exports = {
         loaders: ['babel'],
         exclude: /node_modules/
       }
+    ],
+    postLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /(testlib|node_modules|__tests__|dist)\//,
+        loader: 'istanbul-instrumenter'
+      }
     ]
   }
 };
