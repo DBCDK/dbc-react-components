@@ -11,5 +11,6 @@ Common repository for React components developed at DBC.
 [FilterGuide](src/components/FilterGuide) 
 [Order](src/components/Order)
 [Receipt](src/components/Receipt) 
+[ResultListView](src/components/ResultListView) 
 [TokenSearchField](src/components/TokenSearchField)  
 
