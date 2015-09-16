@@ -15,6 +15,7 @@ const OrderLink = React.createClass({
     agencyId: React.PropTypes.string.isRequired,
     borrowerId: React.PropTypes.string.isRequired,
     coverImagePids: React.PropTypes.array.isRequired,
+    key: React.PropTypes.number,
     linkText: React.PropTypes.string.isRequired,
     orderUrl: React.PropTypes.string.isRequired,
     pickupAgencyId: React.PropTypes.string.isRequired,
@@ -60,7 +61,8 @@ const OrderLink = React.createClass({
       className={'can-order-' + this.state.canOrder + ' order-button button'}
       data-canorder={this.state.canOrder}
       data-identifiers={this.props.pids}
-      href={this.state.orderUrl}>
+      href={this.state.orderUrl}
+      key={this.props.key}>
       {this.props.linkText}</a>);
   }
 });

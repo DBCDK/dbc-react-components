@@ -15,6 +15,9 @@ export {FilterGuide};
 import ImageSwitch from './components/ImageSwitch/ImageSwitchComponent.component.js';
 export {ImageSwitch};
 
+import OrderButton from './components/OrderButton/OrderButton.component.js';
+export {OrderButton};
+
 import OrderLink from './components/OrderLink/OrderLink.component.js';
 export {OrderLink};
 
