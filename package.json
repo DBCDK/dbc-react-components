@@ -10,6 +10,7 @@
     "lint:checkstyle": "eslint ./src  -o report.xml -f checkstyle",
     "reinstall": "rm -r node_modules && npm install",
     "test": "karma start --single-run=true",
+    "test:junit": "npm run test",
     "test:watch": "karma start",
     "watch": "npm run cleardist && babel ./src --watch -d dist --ignore __tests__ --retain-lines"
   },
