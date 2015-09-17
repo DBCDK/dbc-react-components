@@ -57,6 +57,12 @@ const OrderLink = React.createClass({
   },
 
   render() {
+    const required = ['agencyId', 'borrowerId', 'coverImagePids', 'linkText', 'orderUrl', 'pickupAgencyId', 'pids', 'userIsLoggedIn'];
+    for (let i in required) {
+      if (!this.props.hasOwnProperty(required[i])) {
+        return <div className='no-order-button'></div>;
+      }
+    }
     return (<a
       className={'can-order-' + this.state.canOrder + ' order-button button'}
       data-canorder={this.state.canOrder}
