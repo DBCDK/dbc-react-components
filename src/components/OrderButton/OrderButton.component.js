@@ -18,6 +18,12 @@ const OrderButton = React.createClass({
   },
 
   render() {
+    const required = ['manifestations', 'profile'];
+    for (let i in required) {
+      if (!this.props.hasOwnProperty(required[i])) {
+        return <div className='work-container--order-buttons clearfix' ></div>;
+      }
+    }
     const manifestations = this.props.manifestations;
     const profile = this.props.profile;
 
