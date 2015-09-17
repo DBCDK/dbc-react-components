@@ -3,6 +3,7 @@
 # ============
 output
 npm-debug.log
+coverage
 
 # ============
 # BUILDS
