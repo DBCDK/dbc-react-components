@@ -8,7 +8,7 @@ import ResultDisplay from '../DisplayResult.component.js';
 describe('Test DisplayResult Component', () => {
   it('Assert correct rendering of ResultDisplay component', function() {
 
-    let rendered = TestUtils.renderIntoDocument(<ResultDisplay />);
+    let rendered = TestUtils.renderIntoDocument(<ResultDisplay result={[]} />);
 
     let result = React.findDOMNode(rendered);
 

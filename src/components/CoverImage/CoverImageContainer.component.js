@@ -20,6 +20,10 @@ const CoverImageContainer = React.createClass({
   },
 
   getInitialState() {
+    if (this.props.noCoverUrl) {
+      return {imgurl: this.props.noCoverUrl};
+    }
+
     return {imgurl: ''};
   },
 

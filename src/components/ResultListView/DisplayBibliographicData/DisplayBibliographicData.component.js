@@ -47,7 +47,6 @@ const BibliographicData = React.createClass({
     coverImage: React.PropTypes.object,
     creator: React.PropTypes.string,
     identifiers: React.PropTypes.array.isRequired,
-    noOfWorks: React.PropTypes.number,
     title: React.PropTypes.string,
     workType: React.PropTypes.string
   },
@@ -76,7 +75,7 @@ const BibliographicData = React.createClass({
   },
 
   render() {
-    const {title, creator, workType, identifiers, noOfWorks} = this.props;
+    const {title, creator, workType, identifiers} = this.props;
     const icon = _getIcon(workType);
     const pids = identifiers;
     const firstPid = pids[0];
@@ -84,24 +83,17 @@ const BibliographicData = React.createClass({
     const worklink = '/work?id=' + firstPid;
     const CoverComponent = this.getCoverComponent(pids, workType);
 
-    let classes = 'work small-6 medium-4 large-3';
-
-    if (noOfWorks === 1) {
-      classes = 'work small-12 medium-6 large-4';
-    }
-    if (noOfWorks === 3) {
-      classes = 'work small-4 medium-3 large-2';
-    }
-
     return (
-      <div className={classes} data-work-id={firstPid} id={workid} >
-        <a className="image-see-work" href={worklink} >
-          <i className={icon.join(' ')} ></i>
-          {CoverComponent}
-          <div className="title" >{title}</div>
-          <div className="creator" >{creator}</div>
-        </a>
-      </div>);
+      <li>
+        <div className='work' data-work-id={firstPid} id={workid} >
+          <a className="image-see-work" href={worklink} >
+            <i className={icon.join(' ')} ></i>
+            {CoverComponent}
+            <div className="title" >{title}</div>
+            <div className="creator" >{creator}</div>
+          </a>
+        </div>
+      </li>);
   }
 });
 

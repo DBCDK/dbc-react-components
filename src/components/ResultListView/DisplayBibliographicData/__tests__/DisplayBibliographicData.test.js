@@ -5,7 +5,7 @@ let TestUtils = React.addons.TestUtils;
 import {expect, assert} from 'chai';
 import BibliographicData from '../DisplayBibliographicData.component.js';
 
-describe('Test DisplayBibliographicData Component', () => {
+describe('Test Dinpm splayBibliographicData Component', () => {
   it('Assert correct rendering of BibliographicData component', function() {
     let rendered = TestUtils.renderIntoDocument(
       <BibliographicData cover={{images: []}} identifiers={['870970-basis:12345678']} title={"This is a test"} worktype={"book"} />);
@@ -15,7 +15,7 @@ describe('Test DisplayBibliographicData Component', () => {
 
     let bibliographicData = React.findDOMNode(rendered);
 
-    expect(React.findDOMNode(bibliographicData).className).to.contain('work');
+    expect(React.findDOMNode(bibliographicData).children[0].className).to.contain('work');
 
     let title = bibliographicData.getElementsByClassName('title');
 
