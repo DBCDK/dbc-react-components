@@ -15,7 +15,7 @@ const ResultDisplay = React.createClass({
     loadMore: React.PropTypes.func,
     loader: React.PropTypes.element,
     pending: React.PropTypes.bool,
-    result: React.PropTypes.array
+    result: React.PropTypes.array.isRequired
   },
 
   render() {

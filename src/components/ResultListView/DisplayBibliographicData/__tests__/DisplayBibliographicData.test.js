@@ -5,7 +5,7 @@ let TestUtils = React.addons.TestUtils;
 import {expect, assert} from 'chai';
 import BibliographicData from '../DisplayBibliographicData.component.js';
 
-describe('Test Dinpm splayBibliographicData Component', () => {
+describe('Test DisplayBibliographicData Component', () => {
   it('Assert correct rendering of BibliographicData component', function() {
     let rendered = TestUtils.renderIntoDocument(
       <BibliographicData cover={{images: []}} identifiers={['870970-basis:12345678']} title={"This is a test"} worktype={"book"} />);
