@@ -1,38 +1,7 @@
 'use strict';
 import React from 'react';
-import {chunk} from 'lodash';
-import WorkRow from './../DisplayWorkRow/DisplayWorkRow.component.js';
 import LoadMore from './LoadMore.component.js';
-
-/**
- * Method that checks of component is being rendered on server or client
- * @returns {boolean}
- */
-function isClient() {
-  return (typeof window !== 'undefined');
-}
-
-function _getNumberOfRows(windowWidth, noOfWorks) {
-  let rows = noOfWorks;
-  if (windowWidth < 604) {
-    rows = rows;
-  }
-  else if (windowWidth < 1025) {
-    rows += 1;
-  }
-  else {
-    rows += 2;
-    if (noOfWorks === 3) {
-      rows = 6;
-    }
-  }
-  return rows;
-}
-
-function getWorksInRow(windowWidth, works, noOfWorks) {
-  const worksInRows = _getNumberOfRows(windowWidth, noOfWorks);
-  return chunk(works, worksInRows);
-}
+import BibliographicData from './../DisplayBibliographicData/DisplayBibliographicData.component.js';
 
 /**
  * Main component for presenting search result
@@ -45,45 +14,36 @@ const ResultDisplay = React.createClass({
     hasMore: React.PropTypes.bool,
     loadMore: React.PropTypes.func,
     loader: React.PropTypes.element,
-    noOfWorks: React.PropTypes.number,
     pending: React.PropTypes.bool,
     result: React.PropTypes.array
   },
 
-  getInitialState() {
-    return {windowWidth: isClient() && window.innerWidth};
-  },
-
-  componentDidMount() {
-    if (isClient()) {
-      window.addEventListener('resize', this.handleResize);
-    }
-  },
-
-  componentWillUnmount() {
-    if (isClient()) {
-      window.removeEventListener('resize', this.handleResize);
-    }
-  },
-
-  handleResize() {
-    this.setState({windowWidth: isClient() && window.innerWidth});
-  },
-
   render() {
-    const {loader, pending, result, hasMore, loadMore, noOfWorks} = this.props;
-    const rows = getWorksInRow(this.state.windowWidth, result, noOfWorks);
+    const {loader, pending, result, hasMore, loadMore} = this.props;
     const loadMoreButton = (hasMore && !pending) &&
       <LoadMore button={'Se flere'} update={loadMore} />;
-    const workRow = rows.map((work, i) => {
+
+    const workElement = result.map((work, i) => {
       return (
-        <WorkRow coverImage={this.props.coverImage} key={i} noOfWorks={noOfWorks} work={work} />);
+        <BibliographicData
+          coverImage={this.props.coverImage}
+          creator={work.creator}
+          identifiers={work.identifiers}
+          key={i}
+          title={work.title}
+          workType={work.workType}
+          />);
     });
+
     return (
       <div className='container' >
-        {workRow}
-        {loader}
-        {loadMoreButton}
+        <div className='row'>
+          <ul className='small-block-grid-2 medium-block-grid-3 large-block-grid-4'>
+            {workElement}
+          </ul>
+          {loader}
+          {loadMoreButton}
+        </div>
       </div>);
   }
 });
