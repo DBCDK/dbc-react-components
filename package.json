@@ -1,6 +1,6 @@
 {
   "name": "dbc-react-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Common repository for React components developed at DBC",
   "main": "dist/index.js",
   "scripts": {
