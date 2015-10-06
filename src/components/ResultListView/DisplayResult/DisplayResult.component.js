@@ -7,7 +7,7 @@ import BibliographicData from './../DisplayBibliographicData/DisplayBibliographi
  * Main component for presenting search result
  */
 const ResultDisplay = React.createClass({
-  displayName: 'ResultDisplay.component',
+  displayName: 'ResultDisplay',
 
   propTypes: {
     coverImage: React.PropTypes.object,
@@ -20,8 +20,7 @@ const ResultDisplay = React.createClass({
 
   render() {
     const {loader, pending, result, hasMore, loadMore} = this.props;
-    const loadMoreButton = (hasMore && !pending) &&
-      <LoadMore button={'Se flere'} update={loadMore} />;
+    const loadMoreButton = (hasMore && !pending) && <LoadMore button={'Se flere'} update={loadMore} />;
 
     const workElement = result.map((work, i) => {
       return (

@@ -84,10 +84,10 @@ const BibliographicData = React.createClass({
     const CoverComponent = this.getCoverComponent(pids, workType);
 
     return (
-      <li>
+      <li data-work-id={firstPid}>
         <div className='work' data-work-id={firstPid} id={workid} >
           <a className="image-see-work" href={worklink} >
-            <i className={icon.join(' ')} ></i>
+            <i className={icon.join(' ')} />
             {CoverComponent}
             <div className="title" >{title}</div>
             <div className="creator" >{creator}</div>
