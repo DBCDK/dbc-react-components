@@ -185,8 +185,8 @@ describe('Test OrderButton Component', () => {
       <OrderButton manifestations={manifestations} profile={profile} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(true, rendered._store.props.children[0]._store.props.userIsLoggedIn, 'User is logged in');
-    assert.strictEqual('1231231230', rendered._store.props.children[0]._store.props.borrowerId, 'User has provided borrower Id');
+    assert.isTrue(rendered.props.children[0].props.userIsLoggedIn, 'User is logged in');
+    assert.strictEqual('1231231230', rendered.props.children[0].props.borrowerId, 'User has provided borrower Id');
   });
 
   it('User logged in, second library as pickup agency', () => {
@@ -212,8 +212,8 @@ describe('Test OrderButton Component', () => {
       <OrderButton manifestations={manifestations} profile={profile} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(true, rendered._store.props.children[0]._store.props.userIsLoggedIn, 'User is logged in');
-    assert.strictEqual('775100', rendered._store.props.children[0]._store.props.pickupAgencyId, 'User has chosen pickup agency');
+    assert.isTrue(rendered.props.children[0].props.userIsLoggedIn, 'User is logged in');
+    assert.strictEqual('775100', rendered.props.children[0].props.pickupAgencyId, 'User has chosen pickup agency');
   });
 
   it('No manifestations provided', () => {
@@ -235,7 +235,7 @@ describe('Test OrderButton Component', () => {
     );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
-    assert.isUndefined(rendered._store.props.children);
+    assert.isUndefined(rendered.props.children);
   });
 
   it('No profile provided', () => {
@@ -249,7 +249,7 @@ describe('Test OrderButton Component', () => {
     );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
-    assert.isUndefined(rendered._store.props.children);
+    assert.isUndefined(rendered.props.children);
   });
 
   it('No manifestations nor profile provided', () => {
@@ -258,7 +258,7 @@ describe('Test OrderButton Component', () => {
     );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
-    assert.isUndefined(rendered._store.props.children);
+    assert.isUndefined(rendered.props.children);
   });
 
 });
