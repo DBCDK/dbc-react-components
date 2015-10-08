@@ -43,8 +43,8 @@ describe('Test OrderLink Component', () => {
     );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'a', 'Component rendered element of type \'a\'');
-    assert.strictEqual(rendered._store.props['data-identifiers'][0], '870970-basis:28183488', 'Identifier is set');
-    assert.strictEqual(rendered._store.props['data-canorder'], false, 'Cannot order');
+    assert.strictEqual(rendered.props['data-identifiers'][0], '870970-basis:28183488', 'Identifier is set');
+    assert.strictEqual(rendered.props['data-canorder'], false, 'Cannot order');
   });
 
   it('Assert href is eq when orderUrl is given as prop', () => {
@@ -261,5 +261,4 @@ describe('Test OrderLink Component', () => {
     assert.isDefined(render.getDOMNode());
     assert.strictEqual(render.getDOMNode().className, 'no-order-button');
   });
-
 });
