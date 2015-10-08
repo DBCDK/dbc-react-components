@@ -5,18 +5,17 @@
  * Testing Receipt.component.js
  */
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import {assert} from 'chai';
 
 import Receipt from '../Receipt.component.js';
 
 describe('Test Receipt Component', () => {
 
-  let TestUtils = null;
   let render = null;
 
   beforeEach(() => {
-    TestUtils = React.addons.TestUtils;
     render = TestUtils.createRenderer();
   });
 

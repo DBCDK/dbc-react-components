@@ -5,18 +5,17 @@
  * Testing OrderLink.component.js
  */
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import {assert} from 'chai';
 
 import OrderLink from '../OrderLink.component.js';
 
 describe('Test OrderLink Component', () => {
 
-  let TestUtils = null;
   let render = null;
 
   beforeEach(() => {
-    TestUtils = React.addons.TestUtils;
     render = TestUtils.createRenderer();
   });
 

@@ -5,18 +5,17 @@
  * Testing Order.component.js
  */
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import {assert} from 'chai';
 
 import Order from '../Order.component.js';
 
 describe('Test Order Component', () => {
 
-  let TestUtils = null;
   let render = null;
 
   beforeEach(() => {
-    TestUtils = React.addons.TestUtils;
     render = TestUtils.createRenderer();
   });
 

@@ -1,12 +1,11 @@
 'use strict';
 /* eslint-disable spaced-line-comment */
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import {expect, assert} from 'chai';
 
 import AutoCompleteCategory from '../AutoCompleteCategory.component.js';
 import AutoCompleteRow from '../../AutoCompleteRow/AutoCompleteRow.component.js';
-
-let TestUtils = React.addons.TestUtils;
 
 describe('Test AutoCompleteCategory Component', () => {
 

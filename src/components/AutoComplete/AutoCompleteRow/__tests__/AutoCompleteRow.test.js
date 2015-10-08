@@ -5,19 +5,17 @@
  * Testing AutoCompleteRow.component.js
  */
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import {assert} from 'chai';
 
 import AutoCompleteRow from '../AutoCompleteRow.component.js';
 import CoverImage from '../../../CoverImage/CoverImageContainer.component.js';
 
 describe('Test AutoCompleteRow component', () => {
-
-  let TestUtils = null;
   let render = null;
 
   beforeEach(() => {
-    TestUtils = React.addons.TestUtils;
     render = TestUtils.createRenderer();
   });
 

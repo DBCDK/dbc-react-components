@@ -5,18 +5,16 @@
  * Testing CoverImage.component.js
  */
 
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import {assert} from 'chai';
 
 import CoverImage from '../CoverImage.component.js';
 
 describe('Test CoverImageComponent', () => {
-
-  let TestUtils = null;
   let render = null;
 
   beforeEach(() => {
-    TestUtils = React.addons.TestUtils;
     render = TestUtils.createRenderer();
     render.render(<CoverImage />);
   });

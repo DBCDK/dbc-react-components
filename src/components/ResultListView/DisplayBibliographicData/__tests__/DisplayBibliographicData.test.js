@@ -1,6 +1,6 @@
 'use strict';
-import React from 'react/addons';
-let TestUtils = React.addons.TestUtils;
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
 import {expect, assert} from 'chai';
 import BibliographicData from '../DisplayBibliographicData.component.js';
