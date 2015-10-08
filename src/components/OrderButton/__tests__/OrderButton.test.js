@@ -44,13 +44,13 @@ describe('Test OrderButton Component', () => {
     );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
-    assert.strictEqual('Bestil Bog', rendered._store.props.children[0]._store.props.linkText, 'Component rendered order button text');
+    assert.strictEqual('Bestil Bog', rendered.props.children[0].props.linkText, 'Component rendered order button text');
     assert.strictEqual('/work/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog',
-      rendered._store.props.children[0]._store.props.orderUrl, 'Component rendered order button text');
-    assert.strictEqual('775100-katalog:27695183', rendered._store.props.children[0]._store.props.coverImagePids[0], 'Cover Image identifier');
-    assert.strictEqual('Se Lydbog (net) online', rendered._store.props.children[1]._store.props.children, 'Component rendered online link text');
-    assert.strictEqual(rendered._store.props.className, 'work-container--order-buttons clearfix', 'Component rendered element with class');
-    assert.strictEqual(rendered._store.props.children[1].type, 'a', 'Component rendered element of type \'a\'');
+      rendered.props.children[0].props.orderUrl, 'Component rendered order button text');
+    assert.strictEqual('775100-katalog:27695183', rendered.props.children[0].props.coverImagePids[0], 'Cover Image identifier');
+    assert.strictEqual('Se Lydbog (net) online', rendered.props.children[1].props.children, 'Component rendered online link text');
+    assert.strictEqual(rendered.props.className, 'work-container--order-buttons clearfix', 'Component rendered element with class');
+    assert.strictEqual(rendered.props.children[1].type, 'a', 'Component rendered element of type \'a\'');
   });
 
   it('User not logged in', () => {
@@ -76,8 +76,8 @@ describe('Test OrderButton Component', () => {
       <OrderButton manifestations={manifestations} profile={profile} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(false, rendered._store.props.children[0]._store.props.userIsLoggedIn, 'User is not logged in');
-    assert.strictEqual('', rendered._store.props.children[0]._store.props.agencyId, 'No agencyId');
+    assert.strictEqual(false, rendered.props.children[0].props.userIsLoggedIn, 'User is not logged in');
+    assert.strictEqual('', rendered.props.children[0].props.agencyId, 'No agencyId');
   });
 
   it('User logged in, no favorite library', () => {
@@ -103,8 +103,8 @@ describe('Test OrderButton Component', () => {
       <OrderButton manifestations={manifestations} profile={profile} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(true, rendered._store.props.children[0]._store.props.userIsLoggedIn, 'User is logged in');
-    assert.strictEqual('', rendered._store.props.children[0]._store.props.agencyId, 'No agencyId');
+    assert.strictEqual(true, rendered.props.children[0].props.userIsLoggedIn, 'User is logged in');
+    assert.strictEqual('', rendered.props.children[0].props.agencyId, 'No agencyId');
   });
 
   it('User logged in, has favorite library, no borrower Id', () => {
@@ -130,9 +130,9 @@ describe('Test OrderButton Component', () => {
       <OrderButton manifestations={manifestations} profile={profile} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(true, rendered._store.props.children[0]._store.props.userIsLoggedIn, 'User is logged in');
-    assert.strictEqual('710117', rendered._store.props.children[0]._store.props.pickupAgencyId, 'User has a chosen a favorite library');
-    assert.strictEqual('', rendered._store.props.children[0]._store.props.borrowerId, 'User has not provided borrower Id');
+    assert.strictEqual(true, rendered.props.children[0].props.userIsLoggedIn, 'User is logged in');
+    assert.strictEqual('710117', rendered.props.children[0].props.pickupAgencyId, 'User has a chosen a favorite library');
+    assert.strictEqual('', rendered.props.children[0].props.borrowerId, 'User has not provided borrower Id');
   });
 
   it('User logged in, has favorite library and borrower Id', () => {
@@ -158,8 +158,8 @@ describe('Test OrderButton Component', () => {
       <OrderButton manifestations={manifestations} profile={profile} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(true, rendered._store.props.children[0]._store.props.userIsLoggedIn, 'User is logged in');
-    assert.strictEqual('1231231230', rendered._store.props.children[0]._store.props.borrowerId, 'User has provided borrower Id');
+    assert.strictEqual(true, rendered.props.children[0].props.userIsLoggedIn, 'User is logged in');
+    assert.strictEqual('1231231230', rendered.props.children[0].props.borrowerId, 'User has provided borrower Id');
   });
 
   it('User logged in, has pickup agency and borrower Id', () => {
