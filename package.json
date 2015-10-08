@@ -19,7 +19,7 @@
     "dbc-node-serviceprovider-socketclient": "git://github.com/DBCDK/dbc-node-serviceprovider-socketclient#stable_dist",
     "lodash": "^3.10.1",
     "react": "^0.13.3",
-    "reflux": "^0.2.11"
+    "reflux": "^0.2.12"
   },
   "devDependencies": {
     "babel": "^5.8.20",
