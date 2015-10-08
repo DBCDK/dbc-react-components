@@ -43,7 +43,7 @@ describe('Test Order Component', () => {
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
     const text = 'This is a title (Bog)';
-    assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[1]._store.props.children);
+    assert.strictEqual(text, rendered.props.children[1].props.children.props.children[1].props.children);
   });
 
   it('Assert element with correct classes', () => {
@@ -56,7 +56,7 @@ describe('Test Order Component', () => {
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
     const classes = 'place-order-button button';
-    assert.strictEqual(classes, rendered.props.children[3]._store.props.className);
+    assert.strictEqual(classes, rendered.props.children[3].props.className);
   });
 
   it('Assert element with no agency chosen', () => {
@@ -69,7 +69,7 @@ describe('Test Order Component', () => {
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
     const text = 'Du skal vælge et favoritbibliotek for at kunne bestille';
-    assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
+    assert.strictEqual(text, rendered.props.children[1].props.children.props.children[0].props.children);
   });
 
   it('Assert element with no borrower id', () => {
@@ -83,7 +83,7 @@ describe('Test Order Component', () => {
     render.render(<Order order={order} />);
     const rendered = render.getRenderOutput();
     const text = 'Du skal gemme dit låner id i din profil';
-    assert.strictEqual(text, rendered.props.children[1]._store.props.children._store.props.children[0]._store.props.children);
+    assert.strictEqual(text, rendered.props.children[1].props.children.props.children[0].props.children);
   });
 
 });
