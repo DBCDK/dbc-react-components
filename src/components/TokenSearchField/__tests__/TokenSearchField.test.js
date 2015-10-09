@@ -6,7 +6,7 @@
  */
 
 import {expect, assert} from 'chai';
-import TestUtils from 'react/lib/ReactTestUtils';
+import TestUtils from 'react-addons-test-utils';
 import SearchField from '../TokenSearchField.component.js';
 import Token from '../../TokenList/Token.component.js';
 import React from 'react';

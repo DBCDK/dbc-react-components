@@ -6,7 +6,7 @@
  */
 
 import {expect} from 'chai';
-import TestUtils from 'react/lib/ReactTestUtils';
+import TestUtils from 'react-addons-test-utils';
 import TokenList from '../TokenList.component.js';
 import Token from '../Token.component.js';
 import React from 'react';

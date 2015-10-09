@@ -6,7 +6,7 @@
  */
 
 import {expect} from 'chai';
-import TestUtils from 'react/lib/ReactTestUtils';
+import TestUtils from 'react-addons-test-utils';
 import FilterGuide from '../FilterGuide.component.js';
 import FilterGuideListElement from '../FilterGuideListElement.component.js';
 import React from 'react';
