@@ -18,9 +18,9 @@ const SearchField = React.createClass({
   displayName: 'TokenSearchField.component',
   propTypes: {
     change: PropTypes.func,
-    focus: React.PropTypes.func,
-    pending: React.PropTypes.bool,
-    placeholder: React.PropTypes.string,
+    focus: PropTypes.func,
+    pending: PropTypes.bool,
+    placeholder: PropTypes.string,
     query: PropTypes.array.isRequired,
     translations: PropTypes.object,
     update: PropTypes.func.isRequired
