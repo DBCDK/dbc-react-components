@@ -11,19 +11,14 @@ var webpack = require('webpack');
  */
 module.exports = {
   module: {
-    loaders: [
-      {
-        test: /\.js?$/,
-        loaders: ['babel'],
-        exclude: /node_modules/
-      }
-    ],
-    postLoaders: [
-      {
-        test: /\.js$/,
-        exclude: /(testlib|node_modules|__tests__|dist)\//,
-        loader: 'istanbul-instrumenter'
-      }
-    ]
+    preLoaders: [{
+      test: /\.js?$/,
+      loaders: ['babel'],
+      exclude: /node_modules/
+    }, {
+      test: /\.js$/,
+      exclude: /(test|node_modules|bower|__tests__)\//,
+      loader: 'isparta'
+    }]
   }
 };
