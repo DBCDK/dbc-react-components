@@ -32,7 +32,8 @@ module.exports = function(config) {
         type: 'cobertura'
       }, {
         type: 'lcovonly',
-        file: 'lcov.info'
+        file: 'lcov.info',
+        subdir: '.'
       }]
     }
   });
