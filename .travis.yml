@@ -8,5 +8,4 @@ branches:
   only:
   - 'stable'
 after_success:
-  - ls -la
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
