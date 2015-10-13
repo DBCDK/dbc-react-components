@@ -20,7 +20,8 @@
     "lodash": "^3.10.1",
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.0",
-    "reflux": "https://github.com/DBCDK/refluxjs/archive/v0.2.13-dbc.tar.gz"
+    "react-dom": "^0.14.0",
+    "reflux": "^0.2.13"
   },
   "devDependencies": {
     "babel": "^5.8.20",

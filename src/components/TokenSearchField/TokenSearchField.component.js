@@ -10,6 +10,7 @@
  */
 
 import React, {PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import TokenList from '../TokenList/TokenList.component.js';
 import {updateQueryFromString} from '../../utils/QueryString.util.js';
@@ -24,6 +25,18 @@ const SearchField = React.createClass({
     query: PropTypes.array.isRequired,
     translations: PropTypes.object,
     update: PropTypes.func.isRequired
+  },
+
+  hasScrolled: false,
+
+  componentDidMount() {
+    this.hasScrolled = false;
+    window.addEventListener('touchmove', () => {
+      if (!this.hasScrolled) {
+        this.hasScrolled = true;
+        this.onBlur();
+      }
+    });
   },
 
   getInitialState() {
@@ -45,7 +58,9 @@ const SearchField = React.createClass({
     event.preventDefault();
 
     // removing focus from the textfield
-    React.findDOMNode(this.refs.searchfield).blur();
+    this.onBlur();
+    const focus = false;
+    this.props.focus(focus);
 
     // update query with the updated text string
     let text = this.state.text && this.state.text.trim() || '';
@@ -57,7 +72,7 @@ const SearchField = React.createClass({
     // Update local state: remove focus and empty textfield
     this.setState({
       text: '',
-      hasFocus: false
+      hasFocus: focus
     });
   },
 
@@ -66,11 +81,14 @@ const SearchField = React.createClass({
   },
 
   setFocus(state) {
-    if (this.props.focus) {
-      this.props.focus(state);
-    }
+    this.hasScrolled = false;
     let text = state && this.getQueryTexts() || this.state.text;
+    this.props.focus(state); // mismatch between this and the below hasFocus value
     this.setState({hasFocus: state, text});
+  },
+
+  onBlur() {
+    ReactDOM.findDOMNode(this.refs.searchfield).blur();
   },
 
   onChange(event) {
@@ -101,7 +119,6 @@ const SearchField = React.createClass({
             </li>
             <li className='inputfield' >
               <input className='searchfield'
-                     onBlur={this.setFocus.bind(this, false)}
                      onChange={this.onChange}
                      onClick={this.setFocus.bind(this, true)}
                      onFocus={this.setFocus.bind(this, true)}
@@ -109,7 +126,7 @@ const SearchField = React.createClass({
                      ref='searchfield'
                      type='text'
                      value={text || ''}
-                />
+              />
             </li>
             <li className={spinnerClass} ></li>
             <li className='submit' >
