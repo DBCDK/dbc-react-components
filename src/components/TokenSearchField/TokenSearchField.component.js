@@ -31,12 +31,14 @@ const SearchField = React.createClass({
 
   componentDidMount() {
     this.hasScrolled = false;
-    window.addEventListener('touchmove', () => {
-      if (!this.hasScrolled) {
-        this.hasScrolled = true;
-        this.onBlur();
-      }
-    });
+    if (window) {
+      window.addEventListener('touchmove', () => {
+        if (!this.hasScrolled) {
+          this.hasScrolled = true;
+          this.onBlur();
+        }
+      });
+    }
   },
 
   getInitialState() {
