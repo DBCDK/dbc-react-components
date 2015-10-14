@@ -104,6 +104,13 @@ const SearchField = React.createClass({
     }
   },
 
+  onKey(event) {
+    if (event.key && event.key === 'Escape') {
+      this.onBlur();
+      this.setFocus(false);
+    }
+  },
+
   render() {
     const {hasFocus, text} = this.state;
     const {query, pending} = this.props;
@@ -111,7 +118,7 @@ const SearchField = React.createClass({
     const spinnerClass = pending ? 'token-searchfield--spinner pending' : 'token-searchfield--spinner';
 
     return (
-      <div className='token-searchfield' >
+      <div className='token-searchfield' onKeyUp={this.onKey} >
         <form onSubmit={this.onSubmit} >
           <ul className='searchfield-wrapper' >
             <li className='tokens' >
