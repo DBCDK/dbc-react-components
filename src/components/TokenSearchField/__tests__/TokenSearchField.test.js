@@ -49,7 +49,7 @@ describe('Test the SearchField component', () => {
     render.render(<SearchField query={[]} />);
 
     const rendered = render.getRenderOutput();
-    const className = rendered.props.children.props.children.props.children[2].props.className;
+    const className = rendered.props.children.props.children.props.children.props.children.props.children[0].props.children[2].props.className;
     assert.equal(className, 'token-searchfield--spinner', 'pending class is not appended');
   });
 
@@ -58,7 +58,8 @@ describe('Test the SearchField component', () => {
     render.render(<SearchField pending={false} query={[]} />);
 
     const rendered = render.getRenderOutput();
-    const className = rendered.props.children.props.children.props.children[2].props.className;
+    console.log();
+    const className = rendered.props.children.props.children.props.children.props.children.props.children[0].props.children[2].props.className;
     assert.equal(className, 'token-searchfield--spinner', 'pending class is not appended');
   });
 
@@ -67,7 +68,7 @@ describe('Test the SearchField component', () => {
     render.render(<SearchField pending={true} query={[]} />); // eslint-disable-line react/jsx-boolean-value
 
     const rendered = render.getRenderOutput();
-    const className = rendered.props.children.props.children.props.children[2].props.className;
+    const className = rendered.props.children.props.children.props.children.props.children.props.children[0].props.children[2].props.className;
     assert.equal(className, 'token-searchfield--spinner pending', 'pending class is appended');
   });
 });

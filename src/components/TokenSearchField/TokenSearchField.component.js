@@ -153,20 +153,3 @@ const SearchField = React.createClass({
 });
 
 export default SearchField;
-
-/*
- <ul className='searchfield-wrapper' >
- <li className='tokens' >
- <div className={tokenClasses} >
- <TokenList query={query} remove={this.removeElement} translations={this.props.translations} />
- </div>
- </li>
- <li className='inputfield' >
-
- </li>
- <li className={spinnerClass} ></li>
- <li className='submit' >
-
- </li>
- </ul>
- */
