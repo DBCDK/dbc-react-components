@@ -20,7 +20,8 @@ const ResultDisplay = React.createClass({
 
   render() {
     const {loader, pending, result, hasMore, loadMore} = this.props;
-    const loadMoreButton = (hasMore && !pending) && <LoadMore button={'Se flere'} update={loadMore} />;
+    const loadMoreButton = (hasMore && !pending) &&
+      <LoadMore button={'Se flere'} update={loadMore} />;
 
     const workElement = result.map((work, i) => {
       return (
@@ -31,19 +32,18 @@ const ResultDisplay = React.createClass({
           key={i}
           title={work.title}
           workType={work.workType}
-          />);
+        />);
     });
 
     return (
       <div className='container' >
-        <div className='row'>
-          <ul className='small-block-grid-2 medium-block-grid-3 large-block-grid-4'>
-            {workElement}
-          </ul>
-          {loader}
-          {loadMoreButton}
-        </div>
-      </div>);
+        <ul className='small-block-grid-2 medium-block-grid-3 large-block-grid-4' >
+          {workElement}
+        </ul>
+        {loader}
+        {loadMoreButton}
+      </div>
+    );
   }
 });
 
