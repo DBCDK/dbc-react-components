@@ -120,28 +120,32 @@ const SearchField = React.createClass({
     return (
       <div className='token-searchfield' onKeyUp={this.onKey} >
         <form onSubmit={this.onSubmit} >
-          <ul className='searchfield-wrapper' >
-            <li className='tokens' >
-              <div className={tokenClasses} >
-                <TokenList query={query} remove={this.removeElement} translations={this.props.translations} />
+          <div className="row" >
+            <div className="large-12 columns" >
+              <div className="row collapse" >
+                <div className="small-10 columns" >
+                  <div className='tokens' >
+                    <div className={tokenClasses} >
+                      <TokenList query={query} remove={this.removeElement} translations={this.props.translations} />
+                    </div>
+                  </div>
+                  <input className='searchfield'
+                         onChange={this.onChange}
+                         onClick={this.setFocus.bind(this, true)}
+                         onFocus={this.setFocus.bind(this, true)}
+                         placeholder={this.props.placeholder}
+                         ref='searchfield'
+                         type='text'
+                         value={text || ''}
+                  />
+                  <span className={`${spinnerClass}`} />
+                </div>
+                <div className="small-2 columns" >
+                  <input className='button postfix' onClick={this.onSubmit} type='submit' value='Søg' />
+                </div>
               </div>
-            </li>
-            <li className='inputfield' >
-              <input className='searchfield'
-                     onChange={this.onChange}
-                     onClick={this.setFocus.bind(this, true)}
-                     onFocus={this.setFocus.bind(this, true)}
-                     placeholder={this.props.placeholder}
-                     ref='searchfield'
-                     type='text'
-                     value={text || ''}
-              />
-            </li>
-            <li className={spinnerClass} ></li>
-            <li className='submit' >
-              <input className='button small' onClick={this.onSubmit} type='submit' value='søg' />
-            </li>
-          </ul>
+            </div>
+          </div>
         </form>
       </div>
     );
@@ -150,4 +154,19 @@ const SearchField = React.createClass({
 
 export default SearchField;
 
+/*
+ <ul className='searchfield-wrapper' >
+ <li className='tokens' >
+ <div className={tokenClasses} >
+ <TokenList query={query} remove={this.removeElement} translations={this.props.translations} />
+ </div>
+ </li>
+ <li className='inputfield' >
 
+ </li>
+ <li className={spinnerClass} ></li>
+ <li className='submit' >
+
+ </li>
+ </ul>
+ */
