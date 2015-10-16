@@ -73,14 +73,14 @@ const OrderButton = React.createClass({
         return orderLink;
       }
       if (m.accessType === 'online' && relations) {
-        const link = relations.map((r) => {
+        const link = relations.map((r, i) => {
           let where = ' hjemme';
           if (r.access === 'onsite') {
             where = ' på biblioteket';
           }
           let online_link = 'Se ' + m.type + where;
           return (
-            <a className='online-link' href={r.link} key={index} >{online_link}</a>
+            <a className='online-link' href={r.link} key={i} target='_blank'>{online_link}</a>
           );
         });
         return link;
