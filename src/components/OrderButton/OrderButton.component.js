@@ -14,7 +14,8 @@ const OrderButton = React.createClass({
 
   propTypes: {
     manifestations: React.PropTypes.array.isRequired,
-    profile: React.PropTypes.object.isRequired
+    profile: React.PropTypes.object.isRequired,
+    relations: React.PropTypes.array
   },
 
   render() {
@@ -26,6 +27,7 @@ const OrderButton = React.createClass({
     }
     const manifestations = this.props.manifestations;
     const profile = this.props.profile;
+    const relations = this.props.relations;
 
     let agencyId = '';
     let pickupAgencyId = '';
@@ -70,11 +72,18 @@ const OrderButton = React.createClass({
         />);
         return orderLink;
       }
-      if (m.accessType === 'online') {
-        let online_link = 'Se ' + m.type + ' online';
-        return (
-          <a className='online-link' href="#" key={index} >{online_link}</a>
-        );
+      if (m.accessType === 'online' && relations) {
+        const link = relations.map((r) => {
+          let where = ' hjemme';
+          if (r.access === 'onsite') {
+            where = ' på biblioteket';
+          }
+          let online_link = 'Se ' + m.type + where;
+          return (
+            <a className='online-link' href={r.link} key={index} >{online_link}</a>
+          );
+        });
+        return link;
       }
     });
     return (
