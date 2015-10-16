@@ -80,7 +80,7 @@ const OrderButton = React.createClass({
           }
           let online_link = 'Se ' + m.type + where;
           return (
-            <a className='online-link' href={r.link} key={i} target='_blank'>{online_link}</a>
+            <a className='online-link' href={r.link} key={index + '.' + i} target='_blank'>{online_link}</a>
           );
         });
         return link;

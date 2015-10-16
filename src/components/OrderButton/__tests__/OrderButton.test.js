@@ -23,7 +23,11 @@ describe('Test OrderButton Component', () => {
     const manifestations = [
       {type: 'Bog', accessType: 'physical', title: 'Den tavse by', creator: 'Cassandra Clare',
       identifiers: ['775100-katalog:27695183'], dates: ['2009'],
-      order: '/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog'}];
+      order: '/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog'},
+      {type: 'Bog', accessType: 'physical', title: 'Den tavse by', creator: 'Cassandra Clare',
+      identifiers: ['775100-katalog:27695187'], dates: ['2009'],
+      order: '/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog'},
+      {type: 'Lydbog (net)', accessType: 'online', title: 'Den tavse by', creator: 'Cassandra Clare', identifiers: ['775100-katalog:28993374'], dates: ['2011']}];
     const profile = {
       name: '',
       imageUrl: '/dummy.jpg',
@@ -37,8 +41,10 @@ describe('Test OrderButton Component', () => {
       userIsLoggedIn: false,
       error: {}
     };
+    const relations = [{link: 'http://www.filmstriben.dk/bibliotek/film/details.aspx?id=9000000917', access: 'onsite'},
+     {link: 'http://www.filmstriben.dk/fjernleje/film/details.aspx?id=9000000917', access: 'remote'}];
     render.render(
-      <OrderButton manifestations={manifestations} profile={profile} />
+      <OrderButton manifestations={manifestations} profile={profile} relations={relations} />
     );
     const rendered = render.getRenderOutput();
     assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
