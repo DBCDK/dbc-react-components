@@ -23,8 +23,7 @@ describe('Test OrderButton Component', () => {
     const manifestations = [
       {type: 'Bog', accessType: 'physical', title: 'Den tavse by', creator: 'Cassandra Clare',
       identifiers: ['775100-katalog:27695183'], dates: ['2009'],
-      order: '/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog'},
-      {type: 'Lydbog (net)', accessType: 'online', title: 'Den tavse by', creator: 'Cassandra Clare', identifiers: ['775100-katalog: 28993374'], dates: ['2011']}];
+      order: '/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog'}];
     const profile = {
       name: '',
       imageUrl: '/dummy.jpg',
@@ -47,9 +46,35 @@ describe('Test OrderButton Component', () => {
     assert.strictEqual('/work/order?ids=775100-katalog:27695183&creator=Cassandra%20Clare&title=Den%20tavse%20by&type=Bog',
       rendered.props.children[0].props.orderUrl, 'Component rendered order button text');
     assert.strictEqual('775100-katalog:27695183', rendered.props.children[0].props.coverImagePids[0], 'Cover Image identifier');
-    assert.strictEqual('Se Lydbog (net) online', rendered.props.children[1].props.children, 'Component rendered online link text');
     assert.strictEqual(rendered.props.className, 'work-container--order-buttons clearfix', 'Component rendered element with class');
-    assert.strictEqual(rendered.props.children[1].type, 'a', 'Component rendered element of type \'a\'');
+  });
+
+  it('Assert rendering of link to online access', () => {
+    const manifestations = [
+      {type: 'Film (net)', accessType: 'online', title: 'Drengelejren', creator: 'Cathrine Marchen Asmussen', identifiers: ['870970-basis:50687589'], dates: ['2013']}];
+    const profile = {
+      name: '',
+      imageUrl: '/dummy.jpg',
+      followingCount: 16,
+      groupsCount: 7,
+      followersCount: 35,
+      editEnabled: false,
+      favoriteLibraries: [],
+      favoriteLibrariesResolved: [],
+      likes: [],
+      userIsLoggedIn: false,
+      error: {}
+    };
+    const relations = [{link: 'http://www.filmstriben.dk/bibliotek/film/details.aspx?id=9000000917', access: 'onsite'},
+     {link: 'http://www.filmstriben.dk/fjernleje/film/details.aspx?id=9000000917', access: 'remote'}];
+    render.render(
+      <OrderButton manifestations={manifestations} profile={profile} relations={relations} />
+    );
+    const rendered = render.getRenderOutput();
+    assert.strictEqual(rendered.props.children[0][0].props.children, 'Se Film (net) på biblioteket', 'Component rendered a link text');
+    assert.strictEqual(rendered.props.children[0][0].type, 'a', 'Component rendered element of type \'a\'');
+    assert.strictEqual(rendered.props.children[0][0].props.href, 'http://www.filmstriben.dk/bibliotek/film/details.aspx?id=9000000917',
+    'Component rendered a href-attribute with a link');
   });
 
   it('User not logged in', () => {
