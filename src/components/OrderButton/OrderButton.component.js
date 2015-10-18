@@ -74,14 +74,30 @@ const OrderButton = React.createClass({
       }
       if (m.accessType === 'online' && relations) {
         const link = relations.map((r, i) => {
-          let where = ' hjemme';
-          if (r.access === 'onsite') {
-            where = ' på biblioteket';
+          if (r.type === 'dbcaddi:hasOnlineAccess') {
+            if (r.collection.indexOf('150015-erelic') !== -1 || r.collection.indexOf('150021-bibliotek') !== -1 || r.collection.indexOf('150021-fjern') !== -1) {
+              var where = ' hjemme';
+              if (r.access === 'onsite') {
+                where = ' på biblioteket';
+              }
+              var action = '';
+              switch (m.type) {
+                case 'Ebog':
+                  action = 'Læs ';
+                  break;
+                case 'Lydbog (net)':
+                  action = 'Hør ';
+                  break;
+                default:
+                  action = 'Se ';
+                  break;
+              }
+              var online_link = action + m.type + where;
+              return (
+                <a className='online-link' href={r.link} key={index + '.' + i} target='_blank'>{online_link}</a>
+              );
+            }
           }
-          let online_link = 'Se ' + m.type + where;
-          return (
-            <a className='online-link' href={r.link} key={index + '.' + i} target='_blank'>{online_link}</a>
-          );
         });
         return link;
       }

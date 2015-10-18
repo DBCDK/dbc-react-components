@@ -71,8 +71,9 @@ describe('Test OrderButton Component', () => {
       userIsLoggedIn: false,
       error: {}
     };
-    const relations = [{link: 'http://www.filmstriben.dk/bibliotek/film/details.aspx?id=9000000917', access: 'onsite'},
-     {link: 'http://www.filmstriben.dk/fjernleje/film/details.aspx?id=9000000917', access: 'remote'}];
+    const relations = [{link: 'http://www.filmstriben.dk/bibliotek/film/details.aspx?id=9000000917', type: 'dbcaddi:hasOnlineAccess',
+      access: 'onsite', collection: ['150021-bibliotek']},
+     {link: 'http://www.filmstriben.dk/fjernleje/film/details.aspx?id=9000000917', type: 'dbcaddi:hasOnlineAccess', access: 'remote', collection: ['150021-fjern']}];
     render.render(
       <OrderButton manifestations={manifestations} profile={profile} relations={relations} />
     );
