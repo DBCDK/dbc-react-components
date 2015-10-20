@@ -58,9 +58,9 @@ const OrderButton = React.createClass({
     const orderButtons = manifestations.map((m, index) => {
       if (m.accessType === 'physical') {
         const no_order_types = ['other', 'periodica', 'article'];
+        let workTypeOrder = true;
         if (no_order_types.indexOf(m.workType) >= 0) {
-          const no_order = 'Gå til desktopversion for at bestille ' + m.type;
-          return <div className="no-mobile-order" key={index}>{no_order}</div>;
+          workTypeOrder = false;
         }
         let order_ids = [];
         order_ids.push(m.identifiers);
@@ -73,7 +73,9 @@ const OrderButton = React.createClass({
           orderUrl={'/work' + m.order}
           pickupAgencyId={pickupAgencyId}
           pids={order_ids}
+          type={m.type}
           userIsLoggedIn={profile.userIsLoggedIn}
+          workTypeOrder={workTypeOrder}
         />);
         return orderLink;
       }
