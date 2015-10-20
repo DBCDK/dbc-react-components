@@ -55,6 +55,33 @@ describe('Test OrderButton Component', () => {
     assert.strictEqual(rendered.props.className, 'work-container--order-buttons clearfix', 'Component rendered element with class');
   });
 
+  it('Assert rendering of order via desktop version', () => {
+    const manifestations = [
+      {type: 'Tidsskrift', accessType: 'physical', title: 'Illustreret videnskab',
+      identifiers: ['870970-basis:03644669'], dates: [], workType: 'other',
+      order: '/order?ids=870970-basis:036446693&title=Illustreret%20videnskab%20by&type=Tidsskrift'}];
+    const profile = {
+      name: '',
+      imageUrl: '/dummy.jpg',
+      followingCount: 16,
+      groupsCount: 7,
+      followersCount: 35,
+      editEnabled: false,
+      favoriteLibraries: [],
+      favoriteLibrariesResolved: [],
+      likes: [],
+      userIsLoggedIn: false,
+      error: {}
+    };
+    render.render(
+      <OrderButton manifestations={manifestations} profile={profile} />
+    );
+    const rendered = render.getRenderOutput();
+    assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
+    assert.strictEqual(rendered.props.className, 'work-container--order-buttons clearfix', 'Component rendered element with class');
+    assert.strictEqual(rendered.props.children[0].props.className, 'no-mobile-order', 'Component rendered element with class');
+  });
+
   it('Assert rendering of link to online access', () => {
     const manifestations = [
       {type: 'Film (net)', accessType: 'online', title: 'Drengelejren', creator: 'Cathrine Marchen Asmussen', identifiers: ['870970-basis:50687589'], dates: ['2013']}];
