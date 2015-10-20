@@ -20,7 +20,9 @@ const OrderLink = React.createClass({
     orderUrl: React.PropTypes.string.isRequired,
     pickupAgencyId: React.PropTypes.string.isRequired,
     pids: React.PropTypes.array.isRequired,
-    userIsLoggedIn: React.PropTypes.bool.isRequired
+    type: React.PropTypes.string.isRequired,
+    userIsLoggedIn: React.PropTypes.bool.isRequired,
+    workTypeOrder: React.PropTypes.bool.isRequired
   },
 
   getInitialState() {
@@ -57,11 +59,18 @@ const OrderLink = React.createClass({
   },
 
   render() {
-    const required = ['agencyId', 'borrowerId', 'coverImagePids', 'linkText', 'orderUrl', 'pickupAgencyId', 'pids', 'userIsLoggedIn'];
+    const required = ['agencyId', 'borrowerId', 'coverImagePids', 'linkText', 'orderUrl', 'pickupAgencyId', 'pids', 'type', 'userIsLoggedIn', 'workTypeOrder'];
     for (let i in required) {
       if (!this.props.hasOwnProperty(required[i])) {
         return <div className='no-order-button'></div>;
       }
+    }
+    const no_order = 'Gå til desktopversion for at bestille ' + this.props.type;
+    if (this.props.workTypeOrder === false) {
+      return <div className="no-mobile-order" data-canorder={this.state.canOrder} key={this.props.key}>{no_order}</div>;
+    }
+    if (this.props.userIsLoggedIn === true && this.state.canOrder === false) {
+      return <div className="no-mobile-order" data-canorder={this.state.canOrder} key={this.props.key}>{no_order}</div>;
     }
     return (<a
       className={'can-order-' + this.state.canOrder + ' order-button button'}

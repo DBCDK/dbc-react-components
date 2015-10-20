@@ -29,6 +29,8 @@ describe('Test OrderLink Component', () => {
     const pids = ['870970-basis:28183488'];
     const coverImagePids = ['870970-basis:28183488'];
     const userIsLoggedIn = true;
+    const workTypeOrder = true;
+    const mattype = 'Bog';
     render.render(
       <OrderLink agencyId={agencyId}
                  borrowerId={borrowerId}
@@ -38,15 +40,16 @@ describe('Test OrderLink Component', () => {
                  orderUrl={path}
                  pickupAgencyId={pickupAgencyId}
                  pids={pids}
-                 userIsLoggedIn={userIsLoggedIn} />
+                 type={mattype}
+                 userIsLoggedIn={userIsLoggedIn}
+                 workTypeOrder={workTypeOrder} />
     );
     const rendered = render.getRenderOutput();
-    assert.strictEqual(rendered.type, 'a', 'Component rendered element of type \'a\'');
-    assert.strictEqual(rendered.props['data-identifiers'][0], '870970-basis:28183488', 'Identifier is set');
+    assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
     assert.strictEqual(rendered.props['data-canorder'], false, 'Cannot order');
   });
 
-  it('Assert href is eq when orderUrl is given as prop', () => {
+  it('Assert no order link go to desktop version', () => {
     const path = 'this/is/a/path/';
     const agencyId = '710100';
     const borrowerId = '1231231230';
@@ -56,18 +59,25 @@ describe('Test OrderLink Component', () => {
     const pids = ['870970-basis:28183488'];
     const coverImagePids = ['870970-basis:28183488'];
     const userIsLoggedIn = true;
-    render.render(<OrderLink agencyId={agencyId}
-                             borrowerId={borrowerId}
-                             coverImagePids={coverImagePids}
-                             key={key}
-                             linkText={linkText}
-                             orderUrl={path}
-                             pickupAgencyId={pickupAgencyId}
-                             pids={pids}
-                             userIsLoggedIn={userIsLoggedIn} />);
+    const workTypeOrder = false;
+    const mattype = 'Tidsskrift';
+    render.render(
+      <OrderLink agencyId={agencyId}
+                 borrowerId={borrowerId}
+                 coverImagePids={coverImagePids}
+                 key={key}
+                 linkText={linkText}
+                 orderUrl={path}
+                 pickupAgencyId={pickupAgencyId}
+                 pids={pids}
+                 type={mattype}
+                 userIsLoggedIn={userIsLoggedIn}
+                 workTypeOrder={workTypeOrder} />
+    );
     const rendered = render.getRenderOutput();
-    assert.isDefined(rendered.props.href);
-    assert.strictEqual('this/is/a/path/&pickupAgency=710117&borrowerId=1231231230&coverImageIds=870970-basis:28183488', rendered.props.href);
+    assert.strictEqual(rendered.type, 'div', 'Component rendered element of type \'div\'');
+    assert.strictEqual(rendered.props['data-canorder'], false, 'Cannot order');
+    assert.strictEqual(rendered.props.children, 'Gå til desktopversion for at bestille Tidsskrift', 'Go to desktop text');
   });
 
   it('Assert agencyId and pids are undefined when given as props', () => {
@@ -92,31 +102,6 @@ describe('Test OrderLink Component', () => {
     const rendered = render.getRenderOutput();
     assert.isUndefined(rendered.props.agencyId);
     assert.isUndefined(rendered.props.pids);
-  });
-
-  it('Assert linkText added as child when given as a prop', () => {
-    const path = 'this/is/a/path/';
-    const agencyId = '710100';
-    const borrowerId = '1231231230';
-    const key = 0;
-    const linkText = 'Bestil bog';
-    const pickupAgencyId = '710117';
-    const pids = ['870970-basis:28183488'];
-    const coverImagePids = ['870970-basis:28183488'];
-    const text = 'Bestil bog';
-    const userIsLoggedIn = true;
-    render.render(<OrderLink agencyId={agencyId}
-                             borrowerId={borrowerId}
-                             coverImagePids={coverImagePids}
-                             key={key}
-                             linkText={linkText}
-                             orderUrl={path}
-                             pickupAgencyId={pickupAgencyId}
-                             pids={pids}
-                             userIsLoggedIn={userIsLoggedIn} />);
-    const rendered = render.getRenderOutput();
-    assert.isDefined(rendered.props.children);
-    assert.strictEqual(text, rendered.props.children);
   });
 
   it('User not logged in', () => {
