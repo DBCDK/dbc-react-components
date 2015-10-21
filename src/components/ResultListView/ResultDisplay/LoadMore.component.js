@@ -2,7 +2,7 @@
 import React from 'react';
 
 var Loadmore = React.createClass({
-  displayName: 'Loadmore.component',
+  displayName: 'Loadmore',
 
   propTypes: {
     button: React.PropTypes.string,

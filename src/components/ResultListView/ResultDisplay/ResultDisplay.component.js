@@ -1,7 +1,16 @@
 'use strict';
+
+/**
+ * @file
+ * Component that renders a result display.
+ * The layout of the result display can be optional provided through the layout props.
+ */
+
 import React from 'react';
 import LoadMore from './LoadMore.component.js';
 import BibliographicData from './../DisplayBibliographicData/DisplayBibliographicData.component.js';
+
+import DisplayResultStandardLayout from './ResultDisplayStandardLayout.component';
 
 /**
  * Main component for presenting search result
@@ -12,6 +21,7 @@ const ResultDisplay = React.createClass({
   propTypes: {
     coverImage: React.PropTypes.object,
     hasMore: React.PropTypes.bool,
+    layout: React.PropTypes.func,
     loadMore: React.PropTypes.func,
     loader: React.PropTypes.element,
     pending: React.PropTypes.bool,
@@ -20,8 +30,7 @@ const ResultDisplay = React.createClass({
 
   render() {
     const {loader, pending, result, hasMore, loadMore} = this.props;
-    const loadMoreButton = (hasMore && !pending) &&
-      <LoadMore button={'Se flere'} update={loadMore} />;
+    const loadMoreButton = (hasMore && !pending) ? <LoadMore button={'Se flere'} update={loadMore} /> : null;
 
     const workElement = result.map((work, i) => {
       return (
@@ -35,14 +44,10 @@ const ResultDisplay = React.createClass({
         />);
     });
 
+    const Layout = this.props.layout || DisplayResultStandardLayout;
+
     return (
-      <div className='container' >
-        <ul className='small-block-grid-2 medium-block-grid-3 large-block-grid-4' >
-          {workElement}
-        </ul>
-        {loader}
-        {loadMoreButton}
-      </div>
+      <Layout loadMoreButton={loadMoreButton} loader={loader} workElement={workElement}/>
     );
   }
 });
