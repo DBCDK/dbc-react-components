@@ -121,9 +121,9 @@ const SearchField = React.createClass({
       <div className='token-searchfield' onKeyUp={this.onKey} >
         <form onSubmit={this.onSubmit} >
           <div className="row" >
-            <div className="large-12 columns" >
+            <div className="large-24 columns" >
               <div className="row collapse" >
-                <div className="small-10 columns" >
+                <div className="small-20 columns" >
                   <div className='tokens' >
                     <div className={tokenClasses} >
                       <TokenList query={query} remove={this.removeElement} translations={this.props.translations} />
@@ -140,7 +140,7 @@ const SearchField = React.createClass({
                   />
                   <span className={`${spinnerClass}`} />
                 </div>
-                <div className="small-2 columns" >
+                <div className="small-4 columns" >
                   <input className='button postfix' onClick={this.onSubmit} type='submit' value='Søg' />
                 </div>
               </div>

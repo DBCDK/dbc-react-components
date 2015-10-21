@@ -3,7 +3,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 import {expect} from 'chai';
-import ResultDisplay from '../DisplayResult.component.js';
+import ResultDisplay from '../ResultDisplay.component';
 
 describe('Test DisplayResult Component', () => {
   it('Assert correct rendering of ResultDisplay component', function() {
