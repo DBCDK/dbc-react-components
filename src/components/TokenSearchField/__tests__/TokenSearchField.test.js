@@ -58,7 +58,6 @@ describe('Test the SearchField component', () => {
     render.render(<SearchField pending={false} query={[]} />);
 
     const rendered = render.getRenderOutput();
-    console.log();
     const className = rendered.props.children.props.children.props.children.props.children.props.children[0].props.children[2].props.className;
     assert.equal(className, 'token-searchfield--spinner', 'pending class is not appended');
   });
