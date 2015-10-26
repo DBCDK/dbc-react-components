@@ -54,6 +54,10 @@ const BibliographicData = React.createClass({
   getCoverComponent(pids, workType) {
     let CoverImage = null;
 
+    if (!workType) {
+      workType = 'other';
+    }
+
     if (this.props.coverImage) {
       const CoverComponent = this.props.coverImage.component;
       let noCoverUrl = this.props.coverImage.noCoverUrl.url;
@@ -84,7 +88,7 @@ const BibliographicData = React.createClass({
     const CoverComponent = this.getCoverComponent(pids, workType);
 
     return (
-      <li data-work-id={firstPid}>
+      <li data-work-id={firstPid} >
         <div className='work' data-work-id={firstPid} id={workid} >
           <a className="image-see-work" href={worklink} >
             <i className={icon.join(' ')} />
