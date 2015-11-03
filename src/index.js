@@ -9,6 +9,9 @@ export {CoverImageContainer as CoverImage};
 import ResultDisplay from './components/ResultListView/ResultDisplay/ResultDisplay.component.js';
 export {ResultDisplay as ResultDisplay};
 
+import DisplayBibliographicData from './components/ResultListView/DisplayBibliographicData/DisplayBibliographicData.component.js';
+export {DisplayBibliographicData as BibliographicData};
+
 import FilterGuide from './components/FilterGuide/FilterGuide.component.js';
 export {FilterGuide};
 
