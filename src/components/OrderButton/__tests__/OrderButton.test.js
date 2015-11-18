@@ -385,7 +385,20 @@ describe('Test OrderButton Component', () => {
       error: {}
     };
 
-    const favoriteLibraries = [{agencyID: '710117', libraryID: '710100', borrowerID: '', default: 0}, {agencyID: '775100', libraryID: '775100', borrowerID: '1231231230', default: 1}];
+    const favoriteLibraries = [
+      {
+        agencyID: '710117',
+        libraryID: '710100',
+        borrowerID: '',
+        default: 0
+      },
+      {
+        agencyID: '775100',
+        libraryID: '775100',
+        borrowerID: '1231231230',
+        default: 1
+      }
+    ];
 
     render.render(
       <OrderButton favoriteLibraries={favoriteLibraries} manifestations={manifestations} profile={profile} />

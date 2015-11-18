@@ -27,7 +27,13 @@ const SearchField = React.createClass({
     update: PropTypes.func.isRequired
   },
 
-  hasScrolled: false,
+  getInitialState() {
+    return {
+      value: '',
+      hasFocus: false,
+      text: this.getQueryTexts()
+    };
+  },
 
   componentDidMount() {
     this.hasScrolled = false;
@@ -41,13 +47,7 @@ const SearchField = React.createClass({
     }
   },
 
-  getInitialState() {
-    return {
-      value: '',
-      hasFocus: false,
-      text: this.getQueryTexts()
-    };
-  },
+  hasScrolled: false,
 
   removeElement(element) {
     let query = _.remove(this.props.query, (queryObject)=> queryObject !== element);

@@ -115,7 +115,7 @@ const OrderButton = React.createClass({
         return this.getOnlineLink(relations, index, m);
       }
     });
-    
+
     return orderButtons;
   },
 
