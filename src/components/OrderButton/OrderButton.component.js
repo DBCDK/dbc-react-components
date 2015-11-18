@@ -9,11 +9,11 @@ import {findIndex} from 'lodash';
 
 import OrderLink from '../OrderLink/OrderLink.component.js';
 
-
 const OrderButton = React.createClass({
   displayName: 'OrderButton',
 
   propTypes: {
+    favoriteLibraries: React.PropTypes.array,
     manifestations: React.PropTypes.array.isRequired,
     profile: React.PropTypes.object.isRequired,
     relations: React.PropTypes.array
@@ -26,24 +26,26 @@ const OrderButton = React.createClass({
       borrowerId: ''
     };
 
+    const favoriteLibraries = this.props.favoriteLibraries || [];
+
     if (profile.userIsLoggedIn === true) {
-      if (profile.favoriteLibraries.length === 1) {
-        userInfo.agencyId = profile.favoriteLibraries[0].libraryID;
-        userInfo.pickupAgencyId = profile.favoriteLibraries[0].agencyID;
-        userInfo.borrowerId = profile.favoriteLibraries[0].borrowerID;
+      if (favoriteLibraries.length === 1) {
+        userInfo.agencyId = favoriteLibraries[0].libraryID;
+        userInfo.pickupAgencyId = favoriteLibraries[0].agencyID;
+        userInfo.borrowerId = favoriteLibraries[0].borrowerID;
       }
-      else if (profile.favoriteLibraries.length > 1) {
-        const agencies = profile.favoriteLibraries;
+      else if (favoriteLibraries.length > 1) {
+        const agencies = favoriteLibraries;
         const index = findIndex(agencies, 'default', 1);
         if (index > -1) {
-          userInfo.agencyId = profile.favoriteLibraries[index].libraryID;
-          userInfo.pickupAgencyId = profile.favoriteLibraries[index].agencyID;
-          userInfo.borrowerId = profile.favoriteLibraries[index].borrowerID;
+          userInfo.agencyId = favoriteLibraries[index].libraryID;
+          userInfo.pickupAgencyId = favoriteLibraries[index].agencyID;
+          userInfo.borrowerId = favoriteLibraries[index].borrowerID;
         }
         else {
-          userInfo.agencyId = profile.favoriteLibraries[0].libraryID;
-          userInfo.pickupAgencyId = profile.favoriteLibraries[0].agencyID;
-          userInfo.borrowerId = profile.favoriteLibraries[0].borrowerID;
+          userInfo.agencyId = favoriteLibraries[0].libraryID;
+          userInfo.pickupAgencyId = favoriteLibraries[0].agencyID;
+          userInfo.borrowerId = favoriteLibraries[0].borrowerID;
         }
       }
     }
@@ -52,26 +54,25 @@ const OrderButton = React.createClass({
 
   getOrderLink(m, userInfo, manifestations, userIsLoggedIn, index) {
     const no_order_types = ['other', 'periodica', 'article'];
-    let workTypeOrder = true;
-    if (no_order_types.indexOf(m.workType) >= 0) {
-      workTypeOrder = false;
-    }
-    let order_ids = [];
-    order_ids.push(m.identifiers);
-    let orderLink = (<OrderLink
-      agencyId={userInfo.agencyId}
-      borrowerId={userInfo.borrowerId}
-      coverImagePids={manifestations[0].identifiers}
-      key={index}
-      linkText={'Bestil ' + m.type}
-      orderUrl={'/work' + m.order}
-      pickupAgencyId={userInfo.pickupAgencyId}
-      pids={order_ids}
-      type={m.type}
-      userIsLoggedIn={userIsLoggedIn}
-      workTypeOrder={workTypeOrder}
-    />);
-    return orderLink;
+    const workTypeOrder = !(no_order_types.indexOf(m.workType) >= 0);
+
+    const order_ids = [m.identifiers];
+
+    return (
+      <OrderLink
+        agencyId={userInfo.agencyId}
+        borrowerId={userInfo.borrowerId}
+        coverImagePids={manifestations[0].identifiers}
+        key={index}
+        linkText={'Bestil ' + m.type}
+        orderUrl={'/work' + m.order}
+        pickupAgencyId={userInfo.pickupAgencyId}
+        pids={order_ids}
+        type={m.type}
+        userIsLoggedIn={userIsLoggedIn}
+        workTypeOrder={workTypeOrder}
+      />
+    );
   },
 
   getOnlineLink(relations, index, m) {
@@ -96,11 +97,12 @@ const OrderButton = React.createClass({
           }
           var online_link = action + m.type + where;
           return (
-            <a className='online-link' href={r.link} key={index + '.' + i} target='_blank'>{online_link}</a>
+            <a className='online-link' href={r.link} key={index + '.' + i} target='_blank' >{online_link}</a>
           );
         }
       }
     });
+
     return link;
   },
 
@@ -113,6 +115,7 @@ const OrderButton = React.createClass({
         return this.getOnlineLink(relations, index, m);
       }
     });
+    
     return orderButtons;
   },
 
