@@ -18,10 +18,10 @@
     "babel-eslint": "^4.0.5",
     "dbc-node-serviceprovider-socketclient": "git://github.com/DBCDK/dbc-node-serviceprovider-socketclient#stable_dist",
     "lodash": "^3.10.1",
-    "react": "^0.14.3",
+    "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.0",
     "react-dom": "^0.14.0",
-    "reflux": "^0.3.0"
+    "reflux": "^0.2.13"
   },
   "devDependencies": {
     "babel": "^5.8.20",
