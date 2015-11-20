@@ -13,10 +13,6 @@ import React from 'react';
 
 describe('Test the FilterGuide component', () => {
   it('displays a list of words', ()=> {
-    let elements = [
-      {value: 'test', type: 'testType'},
-      {value: 'test2', type: 'testType2'}
-    ];
     let categories = [{type: 'term.workType', value: 'Movie', displayValue: 'Film', cssClass: 'worktype'}];
 
     let select = sinon.spy(); // eslint-disable-line block-scoped-var, no-undef
