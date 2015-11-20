@@ -13,7 +13,6 @@ const FilterGuide = React.createClass({
 
   propTypes: {
     categories: React.PropTypes.array.isRequired,
-    elements: React.PropTypes.array.isRequired,
     select: React.PropTypes.func.isRequired
   },
 
