@@ -22,21 +22,13 @@ describe('Test the FilterGuide component', () => {
     let select = sinon.spy(); // eslint-disable-line block-scoped-var, no-undef
     let props = {
       categories,
-      elements,
       select
     };
 
     let element = React.createElement(FilterGuide, props);
     let dom = TestUtils.renderIntoDocument(element);
     let filterelements = TestUtils.scryRenderedComponentsWithType(dom, FilterGuideListElement);
-    expect(filterelements).to.have.length(3);
+    expect(filterelements).to.have.length(1);
 
-    // Test first element has label
-    let label = TestUtils.findRenderedDOMComponentWithClass(filterelements[1], 'element-label').getDOMNode().textContent;
-    expect(label).to.equal('test');
-
-    // Click on element
-    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithTag(filterelements[1], 'a'));
-    expect(select.calledWith({value: 'test', type: 'testType'})).to.be.ok; // eslint-disable-line block-scoped-var, no-unused-expressions
   });
 });
