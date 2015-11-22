@@ -8,7 +8,7 @@ import React from 'react';
 
 const Order = React.createClass({
 
-  displayName: 'Order',
+  displayName: 'Order.component',
 
   propTypes: {
     coverImage: React.PropTypes.object,
