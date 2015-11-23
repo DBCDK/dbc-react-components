@@ -62,23 +62,30 @@ const OrderLink = React.createClass({
     const required = ['agencyId', 'borrowerId', 'coverImagePids', 'linkText', 'orderUrl', 'pickupAgencyId', 'pids', 'type', 'userIsLoggedIn', 'workTypeOrder'];
     for (let i in required) {
       if (!this.props.hasOwnProperty(required[i])) {
-        return <div className='no-order-button'></div>;
+        return <div className='no-order-button' ></div>;
       }
     }
     const no_order = 'Gå til desktopversion for at bestille ' + this.props.type;
     if (this.props.workTypeOrder === false) {
-      return <div className="no-mobile-order" data-canorder={this.state.canOrder} key={this.props.key}>{no_order}</div>;
+      return (
+        <div className="no-mobile-order" data-canorder={this.state.canOrder} key={this.props.key} >{no_order}</div>
+      );
     }
     if (this.props.userIsLoggedIn === true && this.state.canOrder === false) {
-      return <div className="no-mobile-order" data-canorder={this.state.canOrder} key={this.props.key}>{no_order}</div>;
+      return (
+        <div className="no-mobile-order" data-canorder={this.state.canOrder} key={this.props.key} >{no_order}</div>
+      );
     }
-    return (<a
-      className={'can-order-' + this.state.canOrder + ' order-button button'}
-      data-canorder={this.state.canOrder}
-      data-identifiers={this.props.pids}
-      href={this.state.orderUrl}
-      key={this.props.key}>
-      {this.props.linkText}</a>);
+    return (
+      <a
+        className={'can-order-' + this.state.canOrder + ' order-button button'}
+        data-canorder={this.state.canOrder}
+        data-identifiers={this.props.pids}
+        href={this.state.orderUrl}
+        key={this.props.key} >
+        {this.props.linkText}
+      </a>
+    );
   }
 });
 
