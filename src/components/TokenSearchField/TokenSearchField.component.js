@@ -51,7 +51,9 @@ const SearchField = React.createClass({
 
   removeElement(element) {
     let query = _.remove(this.props.query, (queryObject)=> queryObject !== element);
+    const text = query.map((e)=> e.value).join(' ');
     this.props.update(query);
+    this.setState({text: text});
   },
 
   onSubmit(event) {

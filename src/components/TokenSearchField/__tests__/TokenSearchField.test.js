@@ -37,11 +37,6 @@ describe('Test the SearchField component', () => {
     TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(Tokens[0], 'remove'));
     assert(updateSpy.calledWith([{value: 'test1', index: 1}]), 'called with remaining object');
 
-    // remove last button
-    label = TestUtils.findRenderedDOMComponentWithClass(Tokens[1], 'text').getDOMNode().textContent;
-    expect(label).to.equal('test1');
-    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(Tokens[1], 'remove'));
-    assert(updateSpy.calledWith([{value: 'test2', index: 2}]), 'called with remaining object');
   });
 
   it('should not append \'pending\' when props.pending is undefined', () => {
