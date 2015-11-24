@@ -73,7 +73,11 @@ var SearchField = _react2['default'].createClass({
     var query = _lodash2['default'].remove(this.props.query, function (queryObject) {
       return queryObject !== element;
     });
+    var text = query.map(function (e) {
+      return e.value;
+    }).join(' ');
     this.props.update(query);
+    this.setState({ text: text });
   },
 
   onSubmit: function onSubmit(event) {
